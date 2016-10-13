@@ -1,0 +1,16 @@
+<%# add navigation links to this file %>
+
+<li>
+    <%= link_to root_path do %>
+       <%= image_tag("codasis_lofo.png", class:"mini_m")%>
+    <% end %>
+</li>
+        
+<% if user_signed_in? %>
+    <li><%= link_to "Usuarios", usuarios_path %></li>
+    <li><%= link_to "Cargos", cargos_path %></li>
+    <li><%= link_to "Eventos", eventos_path %></li>
+    <li><%= link_to "Personas", personas_path %></li>
+    <li><%= link_to "Asistencias", asistencias_path %></li>
+<% else %>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2016-06-20
+  ciudad: MyString
+  objetivo: MyString
+  persona: one
+  evento: one
+
+two:
+  fecha: 2016-06-20
+  ciudad: MyString
+  objetivo: MyString
+  persona: two
+  evento: two

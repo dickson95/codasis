@@ -1,0 +1,50 @@
+<br>
+<div class="col-md-offset-4 col-md-4">
+  
+  <%= simple_form_for(@persona) do |f| %>
+    <% if persona.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(persona.errors.count, "error") %> No se puede crear un nuevo registro porque:</h2>
+        <ul>
+          <% persona.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :nombre %>
+ 	  <%= f.text_field :nombres, :required => true, class:'form-control' %>
+ 
+    <%= f.label :documento %>
+ 	  <%= f.text_field :documento, :required => true, class:'form-control' %>
+  
+    <%= f.label :empresa %>
+ 	  <%= f.text_field :empresa, :required => true, class:'form-control' %>
+
+    <%= f.label :email %>
+ 	  <%= f.text_field :email, class:'form-control' %>
+  
+    <%= f.label :telefono %>
+ 	  <%= f.text_field :telefono, :required => true, class:'form-control' %>
+ 
+    <%= f.label :codigo %>
+ 	  <%= f.text_field :codigo, :required => true, class:'form-control' %>
+  
+ 	  <%= f.association :cargo %>
+  
+    <%= f.association :usuario %>
+  
+   <br>
+    <div class="actions">
+      <%= f.submit "Guardar", class: "btn btn-default btn-lg btn-block" %>
+    </div>
+  <% end %>
+
+  <% if @mostrar == true %>
+    <%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, @persona %>
+  <% end %>
+  <br>
+  <br>
+  <%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, personas_path %>
+</div>

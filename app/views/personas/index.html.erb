@@ -1,0 +1,52 @@
+<br>
+<h1 class="text-center">Personas</h1>
+
+  <div class="well well-sm, col-md-offset-4">
+    <%= form_tag personas_path, class: "form-inline", method: 'get' do %>
+    	<label>Buscar:</label>
+        <%= search_field_tag :search, params[:search], :class => "form-control", placeholder: "Ingrese Nombre", size: "30" %>
+    	    <button class="btn btn-success btn-sm">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
+    <% end %>
+  </div>
+  
+<br>
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Nombres</th>
+      <th>Documento</th>
+      <th>Empresa</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <th>Codigo</th>
+      <th>Cargo</th>
+      <th>Usuario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @personas.each do |persona| %>
+      <tr>
+        <td><%= persona.nombres %></td>
+        <td><%= persona.documento %></td>
+        <td><%= persona.empresa %></td>
+        <td><%= persona.email %></td>
+        <td><%= persona.telefono %></td>
+        <td><%= persona.codigo %></td>
+        <td><%= persona.cargo.try(:nombre) %></td>
+        <td><%= persona.usuario.try(:usuario) %></td>
+        <td><%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, persona %></td>
+        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_persona_path(persona) %></td>
+        <td><%= link_to '<i class="fa fa-times fa-2x" aria-hidden="true"></i>'.html_safe, persona, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+   </tbody>
+</table>
+<br>
+<%= link_to '<i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>'.html_safe, new_persona_path %>
+&nbsp; &nbsp;Personas: <%= @personas.count %>
+&nbsp; &nbsp;<%=will_paginate@personas,:previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo;' %>
+
+

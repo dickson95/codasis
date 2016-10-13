@@ -1,0 +1,40 @@
+<br>
+<div class="col-md-offset-4 col-md-4">
+  
+<%= simple_form_for(@evento) do |f| %>  
+  <% if evento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(evento.errors.count, "error") %>No se puede guardar los datos, error en uno de los campos:</h2>
+      <ul>
+        <% evento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+      <%= f.label :asunto %>
+   	  <%= f.text_field :asunto, :required => true, class:'form-control' %>
+
+      <div class="col-md-14 col-sm-14">
+   	    <%= f.input :fecha, as: :datetime_picker, readonly: true,
+            input_html: {value: evento.fecha.try(:strftime, '%d/%m/%Y'),
+              data: {date_options: {format: 'DD/MM/YYYY', ignoreReadonly: true}}} %>
+      </div>
+      <%=f.input :hora%>
+    
+      <%= f.label :ubicacion %>
+   	  <%= f.text_field :ubicacion, :required => true, class:'form-control' %>
+  <br>
+    <div class="actions">
+      <%= f.submit "Guardar", class: "btn btn-default btn-lg btn-block" %>
+    </div>
+<% end %>
+
+ <% if @mostrar == true %>
+    <%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, @asistencia %>
+  <% end %>
+  <br>
+  <br>
+  <%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, asistencias_path %>
+</div>

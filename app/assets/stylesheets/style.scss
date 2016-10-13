@@ -1,0 +1,56 @@
+.mini{
+	width: 80px;
+	height:60px;
+}
+
+.logmed{
+	width: 600px;
+	//ancho
+	height:120px;
+	//alto
+}
+
+.logo{
+	width: 750px; 
+}
+
+.logo1{
+	width: 445px; 
+	height:180px;
+}
+
+.logo2{
+	width: 500px; 
+	height:250px;
+}
+
+.h4{
+	font-family: arial;
+	background-color: black;
+}
+
+body{
+/* IE10+ */ 
+background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #706565 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #706565 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #706565 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(100, #706565));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #706565 100%);
+
+/* W3C Markup */ 
+background-image: linear-gradient(to top, #FFFFFF 0%, #706565 100%);
+	
+}
+
+.logo_f{
+	width:50px;
+	height:50px;
+}

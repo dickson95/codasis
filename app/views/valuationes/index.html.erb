@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Valuationes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Good min</th>
+      <th>Good max</th>
+      <th>Level1</th>
+      <th>Image1</th>
+      <th>Vuln min</th>
+      <th>Vuln max</th>
+      <th>Level2</th>
+      <th>Image2</th>
+      <th>Low min</th>
+      <th>Low max</th>
+      <th>Level3</th>
+      <th>Image3</th>
+      <th>Low min</th>
+      <th>Low max</th>
+      <th>Level3</th>
+      <th>Image4</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @valuationes.each do |valuation| %>
+      <tr>
+        <td><%= valuation.good_min %></td>
+        <td><%= valuation.good_max %></td>
+        <td><%= valuation.level1 %></td>
+        <td><%= valuation.image1 %></td>
+        <td><%= valuation.vuln_min %></td>
+        <td><%= valuation.vuln_max %></td>
+        <td><%= valuation.level2 %></td>
+        <td><%= valuation.image2 %></td>
+        <td><%= valuation.low_min %></td>
+        <td><%= valuation.low_max %></td>
+        <td><%= valuation.level3 %></td>
+        <td><%= valuation.image3 %></td>
+        <td><%= valuation.low_min %></td>
+        <td><%= valuation.low_max %></td>
+        <td><%= valuation.level3 %></td>
+        <td><%= valuation.image4 %></td>
+        <td><%= link_to 'Show', valuation %></td>
+        <td><%= link_to 'Edit', edit_valuation_path(valuation) %></td>
+        <td><%= link_to 'Destroy', valuation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Valuation', new_valuation_path %>

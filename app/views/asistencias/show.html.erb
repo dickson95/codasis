@@ -1,0 +1,29 @@
+<p>
+  <strong>Fecha:</strong>
+  <%= @asistencia.fecha %>
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @asistencia.ciudad %>
+</p>
+
+<p>
+  <strong>Objetivo:</strong>
+  <%= @asistencia.objetivo %>
+</p>
+
+<p>
+  <strong>Persona:</strong>
+  <%= @asistencia.persona %>
+</p>
+
+<p>
+  <strong>Evento:</strong>
+  <%= @asistencia.evento %>
+</p>
+
+<td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_asistencia_path(@asistencia) %></td>
+<br>
+<br>
+<td><%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, asistencias_path %></td>

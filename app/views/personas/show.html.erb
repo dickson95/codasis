@@ -1,0 +1,45 @@
+<br><br><br><br>
+<p>
+  <strong>Nombre:</strong>
+  <%= @persona.nombres %>
+</p>
+
+<p>
+  <strong>Documento:</strong>
+  <%= @persona.documento %>
+</p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @persona.empresa %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @persona.email %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @persona.telefono %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @persona.codigo %>
+</p>
+
+<p>
+  <strong>Cargo:</strong>
+  <%= @persona.cargo.try(:nombre) %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @persona.usuario.try(:usuario) %>
+</p>
+
+<td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_persona_path(@persona) %></td>
+<br>
+<br>
+<td><%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, personas_path %></td>

@@ -1,0 +1,32 @@
+class Persona < ApplicationRecord
+  belongs_to :cargo
+  belongs_to :usuario
+  
+    def self.search(search, page)
+      where(['upper(nombres) like ?',
+      "%#{search}%".upcase]).paginate(page: page, per_page: 5).order("nombres")
+    end
+    
+  # validamos que el campo no este vacio
+    validates :nombres , presence: true
+    validates :telefono , presence: true
+ 
+    
+  # Validamos en una expresion regular nuestro email
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    validates :email, format: { :with => VALID_EMAIL_REGEX , message: "El formato del correo es invalido" }
+  
+  # Validamos que el dato sea unico
+    validates :usuario, uniqueness: {case_sensitive: false ,message: "Ya esta registrado"}
+    validates :documento, uniqueness: {case_sensitive: false ,message: "Ya esta registrado"}
+    
+  #validamos que el numero de documento tenga solo 10 digitos  
+     validates :documento,
+                  :presence => true,
+                    :length => { maximum: 10 }
+                    
+    def name
+      self.nombres
+    end 
+    
+end

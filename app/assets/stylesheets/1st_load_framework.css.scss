@@ -1,0 +1,49 @@
+// import the CSS framework
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// make all images responsive by default
+img {
+  @extend .img-responsive;
+  margin: 0 auto;
+  }
+// override for the 'Home' navigation link
+.navbar-brand {
+  font-size: inherit;
+  }
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+.column {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.form {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.form-centered {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.submit {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-lg;
+  }
+// apply styles to HTML elements
+// to make views framework-neutral
+main {
+  @extend .container;
+  background-color: #eee;
+  padding-bottom: 120px;
+  width: 80%;
+  //ancho
+  margin-top: 100px; // accommodate the navbar
+  //margen debajo de la barra de navegacion
+  }
+section {
+  @extend .row;
+  margin-top: 500px;
+  }

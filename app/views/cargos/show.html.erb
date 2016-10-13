@@ -1,0 +1,16 @@
+<br>
+<p>
+  <strong>Nombre:</strong>
+  <%= @cargo.nombre %>
+</p>
+
+<p>
+  <strong>Dependencia:</strong>
+  <%= @cargo.dependencia %>
+</p>
+
+<td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_cargo_path(@cargo) %></td>
+<br>
+<br>
+<td><%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, cargos_path %></td>
+
