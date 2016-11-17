@@ -74,3 +74,8 @@ source 'https://rails-assets.org' do
 end
 gem 'cancancan'
 gem 'bootswatch-rails'
+
+# code bars
+gem "barby"
+gem "has_barcode"
+gem "rqrcode"

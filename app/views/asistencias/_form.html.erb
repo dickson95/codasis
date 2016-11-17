@@ -22,7 +22,6 @@
       <%= f.label :ciudad %>
      	<%= f.text_field :ciudad, :required => true, class:'form-control' %>
       <%= f.association :persona%>
-      
       <%= f.association :evento%>
      
       <%= f.label :objetivo %>
@@ -34,9 +33,19 @@
  <% end %>
 
   <% if @mostrar == true %>
-    <%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true "></i>'.html_safe, @asistencia %>
+    <%= link_to '<i class="fa fa-eye fa-2x" title="Mostrar"></i>'.html_safe, @asistencia %>
   <% end %>
   <br>
   <br>
-  <%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, asistencias_path %>
+     <%= link_to '<i class="fa fa-reply fa-2x" title="Atras"  data-toggle="tooltip"></i>'.html_safe, asistencias_path %>
 </div>
+
+
+
+
+
+<script>
+ $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+      </script>

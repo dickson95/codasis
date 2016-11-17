@@ -23,10 +23,12 @@
 //= require autocomplete-rails
 
   $(document).on('ready page:change', function(){
-});
-
+   });
+   
   document.addEventListener("turbolinks:load", function() {
+  	
 	$('.datetimepicker').datetimepicker({
 	// put here your custom picker options, that should be applied for all pickers
+	//poner aquí sus opciones recogedor personalizados, que se deben aplicar para todos los recogedores
 	});
 });

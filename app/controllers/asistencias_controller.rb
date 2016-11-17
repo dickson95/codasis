@@ -8,6 +8,8 @@ class AsistenciasController < ApplicationController
     @asistencias = Asistencia.search(params[:search], params[:page])
   end
 
+
+
   # GET /asistencias/1
   # GET /asistencias/1.json
   def show
@@ -26,7 +28,6 @@ class AsistenciasController < ApplicationController
   # POST /asistencias.json
   def create
     @asistencia = Asistencia.new(asistencia_params)
-
     respond_to do |format|
       if @asistencia.save
         format.html { redirect_to @asistencia, notice: 'La asistencia se ha creado correctamente.' }

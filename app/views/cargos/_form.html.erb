@@ -25,12 +25,13 @@
   <% end %>
   
   <% if @mostrar == true %>
-    <%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, @cargo %>
+    <%= link_to '<i class="fa fa-eye fa-2x" title="Mostrar"></i>'.html_safe, @cargo %>
   <% end %>
   <br>
   <br>
-    <%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, cargos_path %>
+    <%= link_to '<i class="fa fa-reply fa-2x" title="Atras"></i>'.html_safe, cargos_path %>
 </div>
+
   <% if @editar == true %>
-    <%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, cargos_path %>
+    <%= link_to '<i class="fa fa-reply fa-2x" title="Atras"></i>'.html_safe, cargos_path %>
   <% end %>

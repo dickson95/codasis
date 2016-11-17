@@ -14,4 +14,7 @@ class Asistencia < ApplicationRecord
     validates :persona , presence: true
     validates :evento , presence: true
     
+    def name
+      self.fecha
+    end
 end

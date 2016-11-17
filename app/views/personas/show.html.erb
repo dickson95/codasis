@@ -26,6 +26,7 @@
 
 <p>
   <strong>Codigo:</strong>
+  <dd><%= @persona.show_barcode(@persona.codigo).html_safe %></dd>
   <%= @persona.codigo %>
 </p>
 
@@ -43,3 +44,5 @@
 <br>
 <br>
 <td><%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, personas_path %></td>
+
+ 

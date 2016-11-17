@@ -28,7 +28,7 @@ class ValuationesController < ApplicationController
 
     respond_to do |format|
       if @valuation.save
-        format.html { redirect_to @valuation, notice: 'Valuation was successfully created.' }
+        format.html { redirect_to @valuation, notice: 'La valoración se creó correctamente.' }
         format.json { render :show, status: :created, location: @valuation }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ValuationesController < ApplicationController
   def update
     respond_to do |format|
       if @valuation.update(valuation_params)
-        format.html { redirect_to @valuation, notice: 'Valuation was successfully updated.' }
+        format.html { redirect_to @valuation, notice: 'La valoración se actualizó correctamente.' }
         format.json { render :show, status: :ok, location: @valuation }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ValuationesController < ApplicationController
   def destroy
     @valuation.destroy
     respond_to do |format|
-      format.html { redirect_to valuationes_url, notice: 'Valuation was successfully destroyed.' }
+      format.html { redirect_to valuationes_url, notice: 'La valoración se elimino con éxito.' }
       format.json { head :no_content }
     end
   end

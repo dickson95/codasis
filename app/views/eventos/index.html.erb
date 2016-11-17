@@ -1,5 +1,5 @@
 <br>
-<h1 class="text-center">Eventos</h1>
+  <h1 class="text-center">Eventos</h1>
 
   <div class="well well-sm, col-md-offset-4">
     <%= form_tag eventos_path, class: "form-inline", method: 'get' do %>
@@ -10,15 +10,14 @@
           </button>
     <% end %>
   </div>
-  
 <br>
 <table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th>Asunto</th>
-      <th>Fecha</th>
-      <th>Hora</th>
-      <th>Ubicacion</th>
+      <th class="center">Asunto</th>
+      <th class="center">Fecha</th>
+      <th class="center">Hora</th>
+      <th class="center">Ubicacion</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,7 +28,7 @@
         <td><%= evento.fecha %></td>
         <td><%= evento.hora %></td>
         <td><%= evento.ubicacion %></td>
-        <td><%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, evento %></td>
+        <td><%= link_to'<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, evento %></td>
         <td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_evento_path(evento) %></td>
         <td><%= link_to '<i class="fa fa-times fa-2x" aria-hidden="true"></i>'.html_safe, evento, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
@@ -40,7 +39,6 @@
 <%= link_to '<i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>'.html_safe, new_evento_path %>
 &nbsp; &nbsp;Eventos: <%= @eventos.count %>
 &nbsp; &nbsp; <%=will_paginate@criadores,:previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo;' %>
-
 
 
 

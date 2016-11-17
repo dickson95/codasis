@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
 	flash[:warning] = exception.message
 	redirect_to root_path
   end
- 
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    render :file => "#{Rails.root}/public/404.html", :status => 404, :layout =>false
+  end
+
   protected
   def configure_permitted_parameters
 	devise_parameter_sanitizer.permit(:sign_up) do |user_params|
@@ -20,5 +24,4 @@ class ApplicationController < ActionController::Base
                                     	:password_confirmation, :name)
 	end
   end
-
 end

@@ -3,8 +3,8 @@ class Persona < ApplicationRecord
   belongs_to :usuario
   
     def self.search(search, page)
-      where(['upper(nombres) like ?',
-      "%#{search}%".upcase]).paginate(page: page, per_page: 5).order("nombres")
+      where(['upper(codigo) like ?',
+      "%#{search}%".upcase]).paginate(page: page, per_page: 5).order("codigo")
     end
     
   # validamos que el campo no este vacio
@@ -29,4 +29,27 @@ class Persona < ApplicationRecord
       self.nombres
     end 
     
+
+#metodo para el codigo de barras 
+    include HasBarcode
+
+
+  def self.get_barcode(number)
+     require 'barby'
+     require 'barby/barcode/qr_code'
+     require 'barby/outputter/svg_outputter'
+     require "barby/barcode/code_128"
+     #obtengo el id del pais y la empresa para armar el codebar
+     #se cambia cuando se registre el codebar de la empresa
+     return p = number
+  end
+ 
+  def show_barcode(code)
+     require 'barby'
+     require 'barby/barcode/qr_code'
+     require 'barby/outputter/svg_outputter'
+     require "barby/barcode/code_128"
+     barcode = Barby::Code128B.new("#{code}")
+     barcode.to_svg(height:60, weight:120)
+  end
 end

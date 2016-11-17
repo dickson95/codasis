@@ -14,13 +14,13 @@
  *= require_self
  */
  .well {
-  min-height: 18px;
-  padding: 15px;
-  margin-right:35%;
-  margin-bottom: 20px;
-  background-color:grey;
-  border: 1px solid #e3e3e3;
-  border-radius: 10px;
+  //min-height: 18px;
+  //padding: 15px;
+  margin-right:35%;//el largo del lado derecho del fondo del buscador
+  //margin-bottom: 20px;
+  //background-color:green;
+  //border: 1px solid #e3e3e3;
+ // border-radius: 10px;
 }
 
  /*
@@ -42,8 +42,9 @@
 }
 
 .fa{
- color: black;
+ color:black;
 }
+
 
 .alert{
   padding: 15px;
@@ -58,16 +59,22 @@
 @import "bootstrap-sprockets";
 
 // Import cerulean variables
-//@import "bootswatch/cerulean/variables";
+@import "bootswatch/cerulean/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
 
 // Bootstrap body padding for fixed navbar
-//body { padding-top: 60px; }
+body { padding-top: 10px; }//bordo abajo de la barra de navegacion
 
 // And finally bootswatch style itself
-//@import "bootswatch/cerulean/bootswatch";
+@import "bootswatch/cerulean/bootswatch";
 
 // Whatever application styles you have go last
+//Sea cual sea la aplicación que tiene estilos ir última
 //@import "base";
+
+
+.center{
+ text-align: center;
+}

@@ -64,6 +64,7 @@ class CargosController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    #Utilice devoluciones de llamada para compartir configuraciones comunes o restricciones entre acciones
     def set_cargo
       @cargo = Cargo.find(params[:id])
     end

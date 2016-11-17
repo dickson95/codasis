@@ -12,7 +12,7 @@
         </ul>
       </div>
     <% end %>
-
+  
     <%= f.label :nombre %>
  	  <%= f.text_field :nombres, :required => true, class:'form-control' %>
  
@@ -34,7 +34,7 @@
  	  <%= f.association :cargo %>
   
     <%= f.association :usuario %>
-  
+ 
    <br>
     <div class="actions">
       <%= f.submit "Guardar", class: "btn btn-default btn-lg btn-block" %>
@@ -45,6 +45,4 @@
     <%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, @persona %>
   <% end %>
   <br>
-  <br>
   <%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, personas_path %>
-</div>

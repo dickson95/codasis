@@ -3,15 +3,17 @@
 @import "bootstrap";
 
 // make all images responsive by default
+//para que todas las imágenes sean de modo responsive 
 img {
   @extend .img-responsive;
   margin: 0 auto;
   }
+  
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
   }
-
+  
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -36,14 +38,13 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
-  padding-bottom: 120px;
-  width: 80%;
-  //ancho
-  margin-top: 100px; // accommodate the navbar
-  //margen debajo de la barra de navegacion
+  background-color: #eee;//color del recuadro blanco en el centro de las vistas.
+  padding-bottom: 200px;//largo del recuadro blanco en el centro de las vistas
+  width: 80%;//Ancho recuadro blanco en el centro de las vistas
+  margin-top: 60px; //margen debajo de la barra de navegacion
+  //
   }
 section {
   @extend .row;
-  margin-top: 500px;
+  margin-top: 10px;
   }

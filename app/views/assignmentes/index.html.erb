@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Assignmentes</h1>
+<h1>Asignaciones</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Role</th>
+      <th class="center">User</th>
+      <th class="center">Role</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= assignment.user %></td>
         <td><%= assignment.role %></td>
-        <td><%= link_to 'Show', assignment %></td>
-        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', assignment %></td>
+        <td><%= link_to 'Editar', edit_assignment_path(assignment) %></td>
+        <td><%= link_to 'Eliminar', assignment, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Assignment', new_assignment_path %>
+<%= link_to 'Nueva Asignacion', new_assignment_path %>

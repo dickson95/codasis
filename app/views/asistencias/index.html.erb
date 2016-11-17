@@ -1,27 +1,28 @@
 <br>
-    <h1 class="text-center">Asistencias</h1>
+  <h1 class="text-center">Asistencias</h1>
 
   <div class="well well-sm, col-md-offset-4">
     <%= form_tag asistencias_path, class: "form-inline", method: 'get' do %>
   	  <label>Buscar:</label>
-     	<%= search_field_tag :search, params[:search], :class => "form-control", placeholder: "Ingrese Nombre", size: "31" %>
-     	 <button class="btn btn-success btn-sm">
-         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-      </button>
+       	<%= search_field_tag :search, params[:search], :class => "form-control", placeholder: "Ingrese Nombre", size: "31" %>
+       	  <button class="btn btn-success btn-sm">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
     <% end %>
   </div>
 <br>
 <table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th>Fecha</th>
-      <th>Ciudad</th>
-      <th>Objetivo</th>
-      <th>Persona</th>
-      <th>Evento</th>
-      <th colspan="3"></th>
+      <th class="center">Fecha</th>
+      <th class="center">Ciudad</th>
+      <th class="center">Objetivo</th>
+      <th class="center">Persona</th>
+      <th class="center">Evento</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
+  
   <tbody>
     <% @asistencias.each do |asistencia| %>
       <tr>
@@ -30,20 +31,19 @@
         <td><%= asistencia.objetivo %></td>
         <td><%= asistencia.persona.try(:nombres) %></td>
         <td><%= asistencia.evento.try(:asunto) %></td>
-        <td><%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, asistencia %></td>
-        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_asistencia_path(asistencia) %></td>
-        <td><%= link_to '<i class="fa fa-times fa-2x" aria-hidden="true"></i>'.html_safe, asistencia, method: :delete, data: { confirm: 'Está seguro?' } %></td>
-        <% end %>
+        <td><%= link_to '<i class="fa fa-eye fa-2x" title="Mostrar"></i>'.html_safe, asistencia %></td>
+        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" title="Editar"></i>'.html_safe, edit_asistencia_path(asistencia) %></td>
+        <td><%= link_to '<i class="fa fa-times fa-2x" title="Eliminar"></i>'.html_safe, asistencia, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
+    <% end %>
   </tbody>
 </table>
 <br>
-<%= link_to '<i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>'.html_safe, new_asistencia_path %>
-&nbsp; &nbsp; Asistencias: <%= @asistencias.count %>
-&nbsp; &nbsp;<%=will_paginate@asistencias,:previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo;' %>
-  
+<%= link_to '<i class="fa fa-plus-square fa-2x" title="Crear nuevo"></i>'.html_safe, new_asistencia_path %>
+&nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="Atras"></i>'.html_safe, asistencias_path %>
+&nbsp; &nbsp; &nbsp; Asistencias: <%= @asistencias.count %>
+&nbsp; &nbsp; &nbsp;<%=will_paginate@asistencias,:previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo;' %>
 
-
-
+ 
 
 

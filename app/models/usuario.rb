@@ -9,9 +9,9 @@ class Usuario < ApplicationRecord
     validates :usuario, uniqueness: {case_sensitive: false ,message: "Ya esta registrado"}
     
 #validamos que el dato sea solo numeros
-    validates :usuario, numericality: {case_sensitive: false ,message: "debe ser el numero de identidad"}
+    validates :usuario, numericality: {case_sensitive: false ,message: "Debe ser el numero de identidad"}
     
-     def name
-        self.usuario
+    def name
+     self.usuario
     end
 end
