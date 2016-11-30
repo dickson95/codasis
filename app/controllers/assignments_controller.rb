@@ -1,34 +1,34 @@
-class AssignmentesController < ApplicationController
+class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
-
-  # GET /assignmentes
-  # GET /assignmentes.json
+  load_and_authorize_resource
+  # GET /assignments
+  # GET /assignments.json
   def index
-    @assignmentes = Assignment.all
+    @assignments = Assignment.all
   end
 
-  # GET /assignmentes/1
-  # GET /assignmentes/1.json
+  # GET /assignments/1
+  # GET /assignments/1.json
   def show
   end
 
-  # GET /assignmentes/new
+  # GET /assignments/new
   def new
     @assignment = Assignment.new
   end
 
-  # GET /assignmentes/1/edit
+  # GET /assignments/1/edit
   def edit
   end
 
-  # POST /assignmentes
-  # POST /assignmentes.json
+  # POST /assignments
+  # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to @assignment, notice: 'La asignación se creó correctamente.' }
+        format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
         format.json { render :show, status: :created, location: @assignment }
       else
         format.html { render :new }
@@ -37,12 +37,12 @@ class AssignmentesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /assignmentes/1
-  # PATCH/PUT /assignmentes/1.json
+  # PATCH/PUT /assignments/1
+  # PATCH/PUT /assignments/1.json
   def update
     respond_to do |format|
       if @assignment.update(assignment_params)
-        format.html { redirect_to @assignment, notice: 'La asignación se actualizó correctamente..' }
+        format.html { redirect_to @assignment, notice: 'Assignment was successfully updated.' }
         format.json { render :show, status: :ok, location: @assignment }
       else
         format.html { render :edit }
@@ -51,12 +51,12 @@ class AssignmentesController < ApplicationController
     end
   end
 
-  # DELETE /assignmentes/1
-  # DELETE /assignmentes/1.json
+  # DELETE /assignments/1
+  # DELETE /assignments/1.json
   def destroy
     @assignment.destroy
     respond_to do |format|
-      format.html { redirect_to assignmentes_url, notice: 'La asignación fue eliminada con éxito.' }
+      format.html { redirect_to assignments_url, notice: 'Assignment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,7 +69,6 @@ class AssignmentesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:user_id, :role_id)
+      params.require(:assignment).permit(:user_id, :rol_id)
     end
 end
-

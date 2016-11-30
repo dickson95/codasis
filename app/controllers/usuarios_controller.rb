@@ -1,6 +1,6 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /usuarios
   # GET /usuarios.json
   def index
@@ -20,7 +20,6 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/1/edit
   def edit
-    @mostrar = true
   end
 
   # POST /usuarios
@@ -30,8 +29,8 @@ class UsuariosController < ApplicationController
 
     respond_to do |format|
       if @usuario.save
-        format.html { redirect_to @usuario, notice: 'El usuario se ha creado correctamente.' }
-        format.json { render :show, status: :created, location: @usuario }
+        format.html { redirect_to usuarios_url, notice: 'El usuario se ha creado correctamente.' }
+        format.json { head :no_content }
       else
         format.html { render :new }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
@@ -44,8 +43,8 @@ class UsuariosController < ApplicationController
   def update
     respond_to do |format|
       if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'El usuario se ha actualizado correctamente.' }
-        format.json { render :show, status: :ok, location: @usuario }
+        format.html { redirect_to usuarios_url, notice: 'El usuario se ha actualizado correctamente.' }
+        format.json { head :no_content }
       else
         format.html { render :edit }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }

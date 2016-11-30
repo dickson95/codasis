@@ -1,5 +1,6 @@
 class AsistenciasController < ApplicationController
   before_action :set_asistencia, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /asistencias
   # GET /asistencias.json
@@ -7,8 +8,6 @@ class AsistenciasController < ApplicationController
     #@asistencias = Asistencia.all
     @asistencias = Asistencia.search(params[:search], params[:page])
   end
-
-
 
   # GET /asistencias/1
   # GET /asistencias/1.json
@@ -28,10 +27,11 @@ class AsistenciasController < ApplicationController
   # POST /asistencias.json
   def create
     @asistencia = Asistencia.new(asistencia_params)
+    
     respond_to do |format|
       if @asistencia.save
-        format.html { redirect_to @asistencia, notice: 'La asistencia se ha creado correctamente.' }
-        format.json { render :show, status: :created, location: @asistencia }
+        format.html { redirect_to asistencias_url, notice: 'La asistencia fue creada exitosamente.' }
+        format.json { head :no_content }
       else
         format.html { render :new }
         format.json { render json: @asistencia.errors, status: :unprocessable_entity }
@@ -44,8 +44,8 @@ class AsistenciasController < ApplicationController
   def update
     respond_to do |format|
       if @asistencia.update(asistencia_params)
-        format.html { redirect_to @asistencia, notice: 'La asistencia se ha actualizado correctamente.' }
-        format.json { render :show, status: :ok, location: @asistencia }
+        format.html { redirect_to asistencias_url, notice: 'La asistencia se ha actualizado correctamente.' }
+        format.json { head :no_content }
       else
         format.html { render :edit }
         format.json { render json: @asistencia.errors, status: :unprocessable_entity }

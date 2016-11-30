@@ -1,6 +1,7 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   # GET /eventos
   # GET /eventos.json
   def index
@@ -29,8 +30,8 @@ class EventosController < ApplicationController
 
     respond_to do |format|
       if @evento.save
-        format.html { redirect_to @evento, notice: 'El evento fue creado correctamente.' }
-        format.json { render :show, status: :created, location: @evento }
+        format.html { redirect_to eventos_url, notice: 'El evento fue creado correctamente.' }
+        format.json { head :no_content }
       else
         format.html { render :new }
         format.json { render json: @evento.errors, status: :unprocessable_entity }
@@ -43,8 +44,8 @@ class EventosController < ApplicationController
   def update
     respond_to do |format|
       if @evento.update(evento_params)
-        format.html { redirect_to @evento, notice: 'El evento fue modificado correctamente.' }
-        format.json { render :show, status: :ok, location: @evento }
+        format.html { redirect_to eventos_url, notice: 'El evento fue modificado correctamente.' }
+        format.json { head :no_content }
       else
         format.html { render :edit }
         format.json { render json: @evento.errors, status: :unprocessable_entity }

@@ -1,6 +1,7 @@
 class PersonasController < ApplicationController
   before_action :set_persona, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   # GET /personas
   # GET /personas.json
   def index
@@ -29,8 +30,8 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.save
-        format.html { redirect_to @persona, notice: 'La persona fue creada satisfactoriamente.' }
-        format.json { render :show, status: :created, location: @persona }
+        format.html { redirect_to personas_url, notice: 'La persona fue creada satisfactoriamente.' }
+        format.json { head :no_content }
       else
         format.html { render :new }
         format.json { render json: @persona.errors, status: :unprocessable_entity }
@@ -43,8 +44,8 @@ class PersonasController < ApplicationController
   def update
     respond_to do |format|
       if @persona.update(persona_params)
-        format.html { redirect_to @persona, notice: 'La persona fue actialisada correctamente.' }
-        format.json { render :show, status: :ok, location: @persona }
+        format.html { redirect_to personas_url, notice: 'La persona fue actialisada correctamente.' }
+        format.json { head :no_content }
       else
         format.html { render :edit }
         format.json { render json: @persona.errors, status: :unprocessable_entity }

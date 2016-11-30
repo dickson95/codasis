@@ -14,9 +14,9 @@
     <% @roles.each do |rol| %>
       <tr>
         <td><%= rol.name %></td>
-        <td><%= link_to 'Mostrar', rol %></td>
-        <td><%= link_to 'Editar', edit_rol_path(rol) %></td>
-        <td><%= link_to 'Eliminar', rol, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+        <td><%= link_to 'Show', rol %></td>
+        <td><%= link_to 'Edit', edit_rol_path(rol) %></td>
+        <td><%= link_to 'Destroy', rol, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'Nuevo Rol', new_rol_path %>
+<%= link_to 'New Rol', new_rol_path %>

@@ -38,7 +38,7 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;//color del recuadro blanco en el centro de las vistas.
+  background-color: #ebfafa;//color del recuadro blanco en el centro de las vistas.
   padding-bottom: 200px;//largo del recuadro blanco en el centro de las vistas
   width: 80%;//Ancho recuadro blanco en el centro de las vistas
   margin-top: 60px; //margen debajo de la barra de navegacion

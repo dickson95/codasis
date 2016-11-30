@@ -33,4 +33,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular('el', 'los')
   
   inflect.irregular('user', 'users')
+  inflect.irregular('rol', 'roles')
+  inflect.irregular('assignment', 'assignments')
+  
 end

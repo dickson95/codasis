@@ -1,5 +1,5 @@
 <br>
-<div class="col-md-offset-4 col-md-4">
+<div class="col-md-offset-2 col-md-8">
   
   <%= simple_form_for(@persona) do |f| %>
     <% if persona.errors.any? %>
@@ -13,28 +13,39 @@
       </div>
     <% end %>
   
-    <%= f.label :nombre %>
- 	  <%= f.text_field :nombres, :required => true, class:'form-control' %>
- 
-    <%= f.label :documento %>
- 	  <%= f.text_field :documento, :required => true, class:'form-control' %>
-  
-    <%= f.label :empresa %>
- 	  <%= f.text_field :empresa, :required => true, class:'form-control' %>
-
-    <%= f.label :email %>
- 	  <%= f.text_field :email, class:'form-control' %>
-  
-    <%= f.label :telefono %>
- 	  <%= f.text_field :telefono, :required => true, class:'form-control' %>
- 
-    <%= f.label :codigo %>
- 	  <%= f.text_field :codigo, :required => true, class:'form-control' %>
-  
- 	  <%= f.association :cargo %>
-  
-    <%= f.association :usuario %>
- 
+    <form>
+      <div class="row">
+        <div class="col-xs-6">
+          <%= f.label :nombre %>
+       	  <%= f.text_field :nombres, :required => true, class:'form-control' %>
+       	</div>  
+        <div class="col-xs-6">
+          <%= f.label :documento %>
+       	  <%= f.text_field :documento, :required => true, class:'form-control' %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :empresa %>
+       	  <%= f.text_field :empresa, :required => true, class:'form-control' %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :email %>
+       	  <%= f.text_field :email, class:'form-control' %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :telefono %>
+       	  <%= f.text_field :telefono, :required => true, class:'form-control' %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :codigo %>
+       	  <%= f.text_field :codigo, :required => true, class:'form-control' %>
+        </div>
+        <div class="col-xs-6">
+         <%= f.association :cargo %>
+        </div>
+        <div class="col-xs-6">
+         <%= f.association :usuario %>
+        </div>
+      </div>  
    <br>
     <div class="actions">
       <%= f.submit "Guardar", class: "btn btn-default btn-lg btn-block" %>
@@ -42,7 +53,7 @@
   <% end %>
 
   <% if @mostrar == true %>
-    <%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, @persona %>
+    <%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, @persona %>
   <% end %>
   <br>
-  <%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, personas_path %>
+  <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, personas_path %>

@@ -1,12 +1,12 @@
 require 'test_helper'
 
-class AssignmentesControllerTest < ActionDispatch::IntegrationTest
+class AssignmentsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @assignment = assignmentes(:one)
+    @assignment = assignments(:one)
   end
 
   test "should get index" do
-    get assignmentes_url
+    get assignments_url
     assert_response :success
   end
 
@@ -17,7 +17,7 @@ class AssignmentesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create assignment" do
     assert_difference('Assignment.count') do
-      post assignmentes_url, params: { assignment: { role_id: @assignment.role_id, user_id: @assignment.user_id } }
+      post assignments_url, params: { assignment: { rol_id: @assignment.rol_id, user_id: @assignment.user_id } }
     end
 
     assert_redirected_to assignment_path(Assignment.last)
@@ -34,7 +34,7 @@ class AssignmentesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update assignment" do
-    patch assignment_url(@assignment), params: { assignment: { role_id: @assignment.role_id, user_id: @assignment.user_id } }
+    patch assignment_url(@assignment), params: { assignment: { rol_id: @assignment.rol_id, user_id: @assignment.user_id } }
     assert_redirected_to assignment_path(@assignment)
   end
 
@@ -43,6 +43,6 @@ class AssignmentesControllerTest < ActionDispatch::IntegrationTest
       delete assignment_url(@assignment)
     end
 
-    assert_redirected_to assignmentes_path
+    assert_redirected_to assignments_path
   end
 end

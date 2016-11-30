@@ -11,7 +11,7 @@ class Evento < ApplicationRecord
     validates :hora , presence: true
     validates :ubicacion, presence: true 
     
-     def name
-        self.asunto
+    def name
+      self.asunto
     end
 end

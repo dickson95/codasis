@@ -15,7 +15,6 @@
 
     <%= f.label :usuario %>
    	<%= f.text_field :usuario, :required => true, class:'form-control' %>
-
     <%= f.label :contraseña %>
    	<%= f.text_field :contraseña, :required => true, class:'form-control' %>
   <br>
@@ -24,10 +23,8 @@
     </div>
   <% end %>
   
-  <% if @mostrar == true %>
-    <%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, @usuario %>
-  <% end %>
+  
   <br>
   <br>
-  <%= link_to '<i class="fa fa-reply fa-2x" aria-hidden="true"></i>'.html_safe, usuarios_path %>
+  <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, usuarios_path %>
 </div>

@@ -1,9 +1,9 @@
 <br>
-<h1 class="text-center">Usuarios</h1>
+<h2 class="text-center"><b>LISTA DE USUARIOS</b></h2>
 
   <div class="well well-md, col-md-offset-4">
     <%= form_tag usuarios_path, class: "form-inline",  method: 'get' do %>
-    	<label>Buscar:</label>
+    	<label>BUSCAR:</label>
         <%= search_field_tag :search, params[:search], :class => "form-control", placeholder: "Ingrese Usuario", size: "30" %>
           <button class="btn btn-success btn-sm">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -15,25 +15,26 @@
 <table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th class="center">Usuario</th>
-      <th class="center">Contraseña</th>
+      <th class="center">USUARIO</th>
+      <th class="center">CONTRASEÑA</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @usuarios.each do |usuario| %>
       <tr>
-        <td><%= usuario.usuario %></td>
-        <td><%= usuario.contraseña %></td>
-        <td><%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, usuario %></td>
-        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_usuario_path(usuario) %></td>
-        <td><%= link_to '<i class="fa fa-times fa-2x" aria-hidden="true"></i>'.html_safe, usuario, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <td class="center"><%= usuario.usuario %></td>
+        <td class="center"><%= usuario.contraseña %></td>
+        <td><%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, usuario, remote: true %></td>
+        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_usuario_path(usuario) %></td>
+        <td><%= link_to '<i class="fa fa-times fa-2x" title="ELIMINAR"></i>'.html_safe, usuario, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-<%= link_to '<i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>'.html_safe, new_usuario_path %>
+<%= link_to '<i class="fa fa-plus-square fa-2x" title="AGREGAR USUARIO"></i>'.html_safe, new_usuario_path %>
+&nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, personas_path %>
 &nbsp; &nbsp; Usuarios: <%= @usuarios.count %>
 &nbsp; &nbsp; <%=will_paginate@usuarios, :previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo' %>
  

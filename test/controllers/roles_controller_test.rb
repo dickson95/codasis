@@ -16,11 +16,11 @@ class RolesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create rol" do
-    assert_difference('Role.count') do
+    assert_difference('Rol.count') do
       post roles_url, params: { rol: { name: @rol.name } }
     end
 
-    assert_redirected_to rol_path(Role.last)
+    assert_redirected_to rol_path(Rol.last)
   end
 
   test "should show rol" do
@@ -39,7 +39,7 @@ class RolesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy rol" do
-    assert_difference('Role.count', -1) do
+    assert_difference('Rol.count', -1) do
       delete rol_url(@rol)
     end
 

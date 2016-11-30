@@ -1,6 +1,7 @@
 class CargosController < ApplicationController
   before_action :set_cargo, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   # GET /cargos
   # GET /cargos.json
   def index
@@ -29,8 +30,8 @@ class CargosController < ApplicationController
 
     respond_to do |format|
       if @cargo.save
-        format.html { redirect_to @cargo, notice: 'El cargo fue creado correctamente.' }
-        format.json { render :show, status: :created, location: @cargo }
+        format.html { redirect_to cargos_url, notice: 'El cargo fue creado correctamente.' }
+        format.json { head :no_content }
       else
         format.html { render :new }
         format.json { render json: @cargo.errors, status: :unprocessable_entity }
@@ -43,8 +44,8 @@ class CargosController < ApplicationController
   def update
     respond_to do |format|
       if @cargo.update(cargo_params)
-        format.html { redirect_to @cargo, notice: 'El cargo fue actualizado correctamente.' }
-        format.json { render :show, status: :ok, location: @cargo }
+        format.html { redirect_to cargos_url, notice: 'El cargo fue actualizado correctamente.' }
+        format.json { head :no_content }
       else
         format.html { render :edit }
         format.json { render json: @cargo.errors, status: :unprocessable_entity }

@@ -1,6 +1,6 @@
 class TypesController < ApplicationController
   before_action :set_typ, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /types
   # GET /types.json
   def index

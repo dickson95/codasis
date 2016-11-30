@@ -1,10 +1,10 @@
 <br>
-  <h1 class="text-center">Eventos</h1>
+  <h2 class="text-center"><b>LISTA DE EVENTOS</b></h2>
 
   <div class="well well-sm, col-md-offset-4">
     <%= form_tag eventos_path, class: "form-inline", method: 'get' do %>
-    	<label>Buscar:</label>
-        <%= search_field_tag :search, params[:search], :class => "form-control", placeholder: "Ingrese Asunto", size: "31" %>
+    	<label>BUSCAR:</label>
+        <%= search_field_tag :search, params[:search], :class => "form-control", placeholder: "Ingrese nombre", size: "31" %>
           <button class="btn btn-success btn-sm">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>
@@ -14,31 +14,32 @@
 <table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th class="center">Asunto</th>
-      <th class="center">Fecha</th>
-      <th class="center">Hora</th>
-      <th class="center">Ubicacion</th>
+      <th class="center">NOMBRE</th>
+      <th class="center">FECHA</th>
+      <th class="center">HORA</th>
+      <th class="center">UBICACION</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @eventos.each do |evento| %>
       <tr>
-        <td><%= evento.asunto %></td>
-        <td><%= evento.fecha %></td>
-        <td><%= evento.hora %></td>
-        <td><%= evento.ubicacion %></td>
-        <td><%= link_to'<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, evento %></td>
-        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_evento_path(evento) %></td>
-        <td><%= link_to '<i class="fa fa-times fa-2x" aria-hidden="true"></i>'.html_safe, evento, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <td class="center"><%= evento.asunto %></td>
+        <td class="center"><%= evento.fecha %></td>
+        <td class="center"><%= evento.hora %></td>
+        <td class="center"><%= evento.ubicacion %></td>
+        <td><%= link_to'<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, evento, remote: true %></td>
+        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_evento_path(evento) %></td>
+        <td><%= link_to '<i class="fa fa-times fa-2x" title="ELIMINAR"></i>'.html_safe, evento, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
    </tbody>
 </table>
 <br>
-<%= link_to '<i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>'.html_safe, new_evento_path %>
+<%= link_to '<i class="fa fa-plus-square fa-2x" title="AGREGAR EVENTO"></i>'.html_safe, new_evento_path %>
+&nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, eventos_path %>
 &nbsp; &nbsp;Eventos: <%= @eventos.count %>
-&nbsp; &nbsp; <%=will_paginate@criadores,:previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo;' %>
+&nbsp; &nbsp; <%=will_paginate@eventos,:previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo;' %>
 
 
 

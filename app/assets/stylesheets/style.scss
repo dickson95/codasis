@@ -62,6 +62,21 @@ background-image: linear-gradient(to top, #FFFFFF 0%, #706565 100%);
 	}
 
 .color{
-
 	background: blue;
 }
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #20B2AA;
+    color: white;
+    width:870px;
+	height:40px;
+}
+

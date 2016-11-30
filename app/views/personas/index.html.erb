@@ -1,9 +1,9 @@
 <br>
-<h1 class="text-center">Personas</h1>
+<h2 class="text-center"><b>LISTA DE PERSONAS</b></h2>
 
   <div class="well well-sm, col-md-offset-4">
     <%= form_tag personas_path, class: "form-inline", method: 'get' do %>
-    	<label>Buscar:</label>
+    	<label>BUSCAR:</label>
         <%= search_field_tag :search, params[:search], :class => "form-control", placeholder: "Ingrese Código", size: "30" %>
     	    <button class="btn btn-success btn-sm">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -15,38 +15,39 @@
 <table class="table table-hover table-striped center">
   <thead>
     <tr>
-      <th class="center">Nombres</th>
-      <th class="center">Documento</th>
-      <th class="center">Empresa</th>
-      <th class="center">Email</th>
-      <th class="center">Telefono</th>
-      <th class="center">Codigo img</th>
-      <th class="center">Cargo</th>
-      <th class="center">Usuario</th>
+      <th class="center">NOMBRE</th>
+      <th class="center">DOCUMENTO</th>
+      <th class="center">EMPRESA</th>
+      <th class="center">EMAIL</th>
+      <th class="center">TELEFONO</th>
+      <th class="center">CODIGO</th>
+      <th class="center">CARGO</th>
+      <th class="center">USUARIO</th>
       <th colspan="3"></th>
     </tr>
   </thead>
+  
   <tbody>
     <% @personas.each do |persona| %>
       <tr>
-        <td><%= persona.nombres %></td>
-        <td><%= persona.documento %></td>
-        <td><%= persona.empresa %></td>
-        <td><%= persona.email %></td>
-        <td><%= persona.telefono %></td>
-        <td><%= persona.show_barcode(persona.codigo).html_safe %><p><%= persona.codigo %></p></td>
-        <td><%= persona.cargo.try(:nombre) %></td>
-        <td><%= persona.usuario.try(:usuario) %></td>
-        
-        <td><%= link_to '<i class="fa fa-eye fa-2x" aria-hidden="true"></i>'.html_safe, persona %></td>
-        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>'.html_safe, edit_persona_path(persona) %></td>
-        <td><%= link_to '<i class="fa fa-times fa-2x" aria-hidden="true"></i>'.html_safe, persona, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <td class="center"><%= persona.nombres %></td>
+        <td class="center"><%= persona.documento %></td>
+        <td class="center"><%= persona.empresa %></td>
+        <td class="center"><%= persona.email %></td>
+        <td class="center"><%= persona.telefono %></td>
+        <td class="center"><%= persona.show_barcode(persona.codigo).html_safe %><p><%= persona.codigo %></p></td>
+        <td class="center"><%= persona.cargo.try(:nombre) %></td>
+        <td class="center"><%= persona.usuario.try(:usuario) %></td>
+        <td><%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, persona, remote: true %></td>
+        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_persona_path(persona) %></td>
+        <td><%= link_to '<i class="fa fa-times fa-2x" title="ELIMINAR"></i>'.html_safe, persona, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
    </tbody>
 </table>
 <br>
-<%= link_to '<i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>'.html_safe, new_persona_path %>
+<%= link_to '<i class="fa fa-plus-square fa-2x" title="AGREGAR REGISTRO"></i>'.html_safe, new_persona_path %>
+&nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, personas_path %>
 &nbsp; &nbsp;  &nbsp;Personas: <%= @personas.count %>
 &nbsp; &nbsp;  &nbsp;<%=will_paginate@personas,:previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo;' %>
 

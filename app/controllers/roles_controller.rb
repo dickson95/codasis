@@ -1,10 +1,10 @@
 class RolesController < ApplicationController
   before_action :set_rol, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /roles
   # GET /roles.json
   def index
-    @roles = Role.all
+    @roles = Rol.all
   end
 
   # GET /roles/1
@@ -14,7 +14,7 @@ class RolesController < ApplicationController
 
   # GET /roles/new
   def new
-    @rol = Role.new
+    @rol = Rol.new
   end
 
   # GET /roles/1/edit
@@ -24,11 +24,11 @@ class RolesController < ApplicationController
   # POST /roles
   # POST /roles.json
   def create
-    @rol = Role.new(rol_params)
+    @rol = Rol.new(rol_params)
 
     respond_to do |format|
       if @rol.save
-        format.html { redirect_to @rol, notice: 'El rol se creó correctamente.' }
+        format.html { redirect_to @rol, notice: 'Rol was successfully created.' }
         format.json { render :show, status: :created, location: @rol }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @rol.update(rol_params)
-        format.html { redirect_to @rol, notice: 'El rol se ha actualizado correctamente.' }
+        format.html { redirect_to @rol, notice: 'Rol was successfully updated.' }
         format.json { render :show, status: :ok, location: @rol }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class RolesController < ApplicationController
   def destroy
     @rol.destroy
     respond_to do |format|
-      format.html { redirect_to roles_url, notice: 'El rol fue destruido con éxito.' }
+      format.html { redirect_to roles_url, notice: 'Rol was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +64,7 @@ class RolesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rol
-      @rol = Role.find(params[:id])
+      @rol = Rol.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
