@@ -1,0 +1,61 @@
+ <h3 ><center>INFORMACIÓN DEL EVENTO</center></h3>
+    	
+    	
+  <div class="row">
+  <div class="col-md-3">        
+    <strong>Nombre:</strong>
+    <%= @evento.asunto %>
+  </div>
+  
+  <div class="col-md-3">
+    <strong>Fecha:</strong>
+    <%= @evento.fecha %>
+  </div>
+  
+  <div class="col-md-3">
+    <strong>Hora:</strong>
+    <%= @evento.hora %>
+  </div>
+  
+  <div class="col-md-3">
+    <strong>Ubicacion:</strong>
+    <%= @evento.ubicacion %>
+  </div>
+  
+  <br><br>
+  
+  <% if @evento.personas.any? %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+            <th>Nombres</th>
+            <th>Documento</th>
+            <th>Empresa</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Código</th>
+            <th>Cargo</th>
+            <th colspan="1"></th>
+        </tr>
+      <thead>
+      <% @evento.personas.each do |persona| %>
+      <tbody2>
+        <tr>
+          <td><%= persona.nombres %></td>
+          <td><%= persona.documento %></td>
+          <td><%= persona.empresa %></td>
+          <td><%= persona.email %></td>
+          <td><%= persona.telefono %></td>
+          <td><%= persona.codigo %></td>
+          <td><%= persona.cargo.try(:name) %></td>
+          <td><%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, persona,remote: true %></td>
+        </tr>
+      </tbody2>
+      <% end %>
+    </table>
+    <% else %>
+      <p>No hay personas</p>
+<% end %>
+
+<%= link_to 'Editar', edit_evento_path(@evento) %> |
+<%= link_to 'Atrás', eventos_path %>

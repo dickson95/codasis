@@ -29,6 +29,31 @@
             <%= @evento.ubicacion %>
           </div>
           
+          <% if @evento.personas.any? %>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Valor</th>
+                </tr>
+              <thead>
+              <% @venta.detalles.each do |detalle| %>
+              <tbody2>
+                <tr>
+                  <td><%= link_to detalle.id, detalle %></td>
+                  <td><%= detalle.producto.try(:nombre) %></td>
+                  <td><%= detalle.cantidad_producto %></td>
+                  <td><%= number_with_delimiter(detalle.valor, delimiter: ".")  %></td>
+                </tr>
+              </tbody2>
+              <% end %>
+            </table>
+            <% else %>
+              <p>No hay personas</p>
+        <% end %>
+          
 	      </div>
       	  <div class="modal-footer"></div>
   	  </div>

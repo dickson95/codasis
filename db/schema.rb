@@ -11,19 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117142642) do
-
-  create_table "asistencias", force: :cascade do |t|
-    t.date     "fecha"
-    t.string   "ciudad"
-    t.string   "objetivo"
-    t.integer  "persona_id"
-    t.integer  "evento_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["evento_id"], name: "index_asistencias_on_evento_id"
-    t.index ["persona_id"], name: "index_asistencias_on_persona_id"
-  end
+ActiveRecord::Schema.define(version: 20161130234200) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
@@ -61,7 +49,9 @@ ActiveRecord::Schema.define(version: 20161117142642) do
     t.integer  "usuario_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "evento_id"
     t.index ["cargo_id"], name: "index_personas_on_cargo_id"
+    t.index ["evento_id"], name: "index_personas_on_evento_id"
     t.index ["usuario_id"], name: "index_personas_on_usuario_id"
   end
 
@@ -100,13 +90,6 @@ ActiveRecord::Schema.define(version: 20161117142642) do
     t.string   "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "usuarios", force: :cascade do |t|
-    t.string   "usuario"
-    t.string   "contraseña"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "valuationes", force: :cascade do |t|

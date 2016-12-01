@@ -4,11 +4,9 @@ Rails.application.routes.draw do
   resources :roles
   devise_for :users
   resources :users
-  resources :asistencias
   resources :personas
   resources :eventos
   resources :cargos
-  resources :usuarios
   
    
   

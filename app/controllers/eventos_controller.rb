@@ -17,6 +17,7 @@ class EventosController < ApplicationController
   # GET /eventos/new
   def new
     @evento = Evento.new
+    @evento.personas.build
   end
 
   # GET /eventos/1/edit
@@ -71,6 +72,8 @@ class EventosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:asunto, :fecha, :hora, :ubicacion)
+      params.require(:evento).permit(:asunto, :fecha, :hora, :ubicacion,
+                                  personas_attributes: [:id, :nombres, :documento, 
+                                  :empresa, :email,:telefono,:codigo,:cargo_id, :evento_id, :_destroy])
     end
 end

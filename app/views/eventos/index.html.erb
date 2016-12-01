@@ -28,7 +28,7 @@
         <td class="center"><%= evento.fecha %></td>
         <td class="center"><%= evento.hora %></td>
         <td class="center"><%= evento.ubicacion %></td>
-        <td><%= link_to'<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, evento, remote: true %></td>
+        <td><%= link_to'<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, evento %></td>
         <td><%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_evento_path(evento) %></td>
         <td><%= link_to '<i class="fa fa-times fa-2x" title="ELIMINAR"></i>'.html_safe, evento, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
