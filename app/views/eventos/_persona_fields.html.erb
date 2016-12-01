@@ -1,38 +1,38 @@
 <fieldset>
-    <div class="row">
-        <div class="col-md-4">
-    		<%= f.label :nombres %>
-    		<%= f.text_field :nombres, label: false, class: "form-control" %>
-    	</div>
-    	<div class="col-md-4">
-    	    <%= f.input :documento, class:"form-control" %>
-    	</div>
-    	<div class="col-md-4">
-    		<%= f.label :empresa %>
-    		<%= f.text_field :empresa, label: false, class: "form-control" %>
-    	</div>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :nombres %>
+      <%= f.text_field :nombres, label: false, class: "form-control" %>
     </div>
-  
-   <div class="row">
-    	<div class="col-md-3">
-    		<%= f.label :email %>
-    		<%= f.text_field :email, label: false, class: "form-control" %>
-    	</div>
-    	<div class="col-md-3">
-    		<%= f.label :telefono %>
-    		<%= f.text_field :telefono, label: false, class: "form-control" %>
-    	</div>
-    	<div class="col-md-3">
-            <%= f.input :codigo, class:"form-control" %>
-    	</div>
-        <div class="col-md-3">
-            <%= f.association :cargo, :prompt=>"Seleccione un Cargo" %>
-	    </div>
+    <div class="col-md-4">
+        <%= f.input :documento, class:"form-control" %>
     </div>
-    
-	<%= f.hidden_field :_destroy %>
-	<div class="col-md-12">
-	    <%= link_to "Eliminar", '#', class: "remove_fields" %>
-	</div>
+    <div class="col-md-4">
+      <%= f.label :empresa %>
+      <%= f.text_field :empresa, label: false, class: "form-control" %>
+    </div>
   </div>
+                
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.label :email %>
+      <%= f.text_field :email, label: false, class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :telefono %>
+      <%= f.text_field :telefono, label: false, class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.input :codigo, class:"form-control" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.association :cargo, :prompt=>"Seleccione un Cargo" %>
+    </div>
+  </div>
+                
+    <%= f.hidden_field :_destroy %>
+
+    <div class="col-md-12">
+      <%= link_to "Eliminar", '#', class: "remove_fields" %>
+    </div>
 </fieldset>
