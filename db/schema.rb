@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130234200) do
+ActiveRecord::Schema.define(version: 20161201204745) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
@@ -61,19 +61,6 @@ ActiveRecord::Schema.define(version: 20161130234200) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "types", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "unites", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                          null: false
@@ -90,24 +77,6 @@ ActiveRecord::Schema.define(version: 20161130234200) do
     t.string   "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "valuationes", force: :cascade do |t|
-    t.integer  "good_min"
-    t.integer  "good_max"
-    t.integer  "level1"
-    t.string   "image1"
-    t.integer  "vuln_min"
-    t.integer  "vuln_max"
-    t.integer  "level2"
-    t.string   "image2"
-    t.integer  "low_min"
-    t.integer  "low_max"
-    t.integer  "level3"
-    t.string   "image3"
-    t.string   "image4"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

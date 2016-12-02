@@ -18,6 +18,8 @@
         <%= @evento.ubicacion %>
     </div>
     <br><br>
+  </div>
+  
     <% if @evento.personas.any? %>
       <table class="table table-bordered">
         <thead>
@@ -29,7 +31,9 @@
             <th class="center">Telefono</th>
             <th class="center">Código</th>
             <th class="center">Cargo</th>
-            <th colspan="1"></th>
+            <% if can? :manage, :all %>
+              <th colspan="1"></th>
+            <% end %>
           </tr>
         <thead>
         <% @evento.personas.each do |persona| %>
@@ -42,7 +46,9 @@
               <td class="center"><%= persona.telefono %></td>
               <td class="center"><%= persona.codigo %></td>
               <td class="center"><%= persona.cargo.try(:name) %></td>
-              <td> <%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, persona,remote: true %> </td>
+              <% if can? :manage, :all %>
+                <td> <%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, persona,remote: true %> </td>
+              <% end %>
             </tr>
           </tbody2>
         <% end %>
@@ -50,7 +56,8 @@
       <% else %>
         <p>No hay asistencias</p>
     <% end %>
-
-&nbsp; &nbsp; <%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_evento_path(@evento) %>
+<% if can? :manage, :all %>
+  &nbsp; &nbsp; <%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_evento_path(@evento) %>
+<% end %>
 &nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, eventos_path %>
 

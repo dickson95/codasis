@@ -4,13 +4,10 @@ class Ability
       
       user ||= User.new 
       
-      if user.has_rol? :usuario
+      if user.has_rol? :admin
         can :manage, :all
-        authorize! :manage, :all  #Aqui le damos autorización al admin de tener acceso a todo.
       elsif user.has_rol? :usuario
         can :read, Evento
-      else
-        can :manage, :all
       end
       # Define abilities for the passed in user here. For example:
       #

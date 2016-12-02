@@ -1,3 +1,4 @@
+
 <br>
   <h2 class="text-center"><b>LISTA DE EVENTOS</b></h2>
 
@@ -28,15 +29,23 @@
         <td class="center"><%= evento.fecha %></td>
         <td class="center"><%= evento.hora %></td>
         <td class="center"><%= evento.ubicacion %></td>
-        <td><%= link_to'<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, evento %></td>
-        <td><%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_evento_path(evento) %></td>
-        <td><%= link_to '<i class="fa fa-times fa-2x" title="ELIMINAR"></i>'.html_safe, evento, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <% if can? :manage, :all %>
+          <td><%= link_to'<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, evento %></td>
+          <td><%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_evento_path(evento) %></td>
+          <td><%= link_to '<i class="fa fa-times fa-2x" title="ELIMINAR"></i>'.html_safe, evento, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <% elsif can? :read, Evento%>
+          <td><%= link_to'<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, evento %></td>
+        <% end %>
       </tr>
     <% end %>
    </tbody>
 </table>
 <br>
-<%= link_to '<i class="fa fa-plus-square fa-2x" title="AGREGAR EVENTO"></i>'.html_safe, new_evento_path %>
+
+<% if can? :manage, :all %>
+  <%= link_to '<i class="fa fa-plus-square fa-2x" title="AGREGAR EVENTO"></i>'.html_safe, new_evento_path %>
+<% end %>
+
 &nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, eventos_path %>
 &nbsp; &nbsp;Eventos: <%= @eventos.count %>
 &nbsp; &nbsp; <%=will_paginate@eventos,:previous_label =>'&laquo; Anterior',:next_label =>'Siguiente &raquo;' %>

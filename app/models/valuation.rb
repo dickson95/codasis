@@ -1,2 +1,0 @@
-class Valuation < ApplicationRecord
-end

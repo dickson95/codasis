@@ -14,8 +14,10 @@ class User < ApplicationRecord
   
   after_create :asignar_rol_por_defecto
   
-  def asignar_rol_por_defecto 
-    Assignment.create(user_id: self.id, rol_id: Rol.find_by_name('usuario').id)
+  def asignar_rol_por_defecto
+    if Rol.find_by_name('usuario') != nil
+      Assignment.create(user_id: self.id, rol_id: Rol.find_by_name('usuario').id)
+    end
   end
   
 end
