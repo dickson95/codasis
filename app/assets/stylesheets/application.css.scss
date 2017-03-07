@@ -13,12 +13,13 @@
  *= require_tree .
  *= require_self
  */
+ 
  .well {
   //min-height: 18px;
   //padding: 15px;
   margin-right:35%;//el largo del lado derecho del fondo del buscador
   //margin-bottom: 20px;
-  //background-color:green;
+  background-color:green;
   //border: 1px solid #e3e3e3;
  // border-radius: 10px;
 }
@@ -35,11 +36,23 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
  
+//logos de la barra de navegacion
 
-.mini_m{
- width: 80px;
- height: 50px;
+.mini_m{      //logo codasis
+ width: 150px;
+ //ancho
+ height: 45px;
+ //alto
+ padding: 1px 6px 1px 3px;
 }
+
+.logo_f {   //logo sena
+	width: 60px;
+	height: 45px;
+	padding: 1px 6px 1px 3px;
+}
+
+
 
 .fa{
  color:black;
@@ -53,6 +66,7 @@
   border-radius: 4px;
 }
 
+/*
 // Example using 'Cerulean' bootswatch
 
 //Import bootstrap-sprockets
@@ -73,7 +87,7 @@ body { padding-top: 10px; }//bordo abajo de la barra de navegacion
 // Whatever application styles you have go last
 //Sea cual sea la aplicación que tiene estilos ir última
 //@import "base";
-
+*/
 
 .center{
  text-align: center;
@@ -88,3 +102,4 @@ body { padding-top: 10px; }//bordo abajo de la barra de navegacion
 .alert{
  margin-top:10px;
 }
+

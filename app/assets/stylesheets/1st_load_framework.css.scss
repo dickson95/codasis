@@ -10,6 +10,7 @@ img {
   }
   
 // override for the 'Home' navigation link
+//Override para el enlace de navegación "Inicio"
 .navbar-brand {
   font-size: inherit;
   }
@@ -21,29 +22,34 @@ img {
   @extend .col-md-6;
   @extend .text-center;
   }
+  
 .form {
   @extend .col-md-6;
   @extend .text-center;
   }
+  
 .form-centered {
   @extend .col-md-6;
   @extend .text-center;
   }
+  
 .submit {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-lg;
   }
+  
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
   @extend .container;
   background-color: #ebfafa;//color del recuadro blanco en el centro de las vistas.
-  padding-bottom: 200px;//largo del recuadro blanco en el centro de las vistas
+  padding-bottom: 180px;//largo del recuadro blanco en el centro de las vistas
   width: 80%;//Ancho recuadro blanco en el centro de las vistas
   margin-top: 60px; //margen debajo de la barra de navegacion
   //
   }
+  
 section {
   @extend .row;
   margin-top: 10px;

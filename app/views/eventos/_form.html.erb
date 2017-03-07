@@ -1,50 +1,92 @@
 <br>
-<div class="col-md-offset-">
-  <%= simple_form_for(@evento) do |f| %> 
-    <% if evento.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(evento.errors.count, "error") %> No se puede guardar los datos, error en uno de los campos:</h2>
-          <ul>
-            <% evento.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-      </div>
-    <% end %>
-      <div class="row">
-        <div class="col-md-3">
-          <%= f.label :asunto %>
-          <%= f.text_field :asunto, :required => true, class:'form-control' %>
+  <div class="col-md-offset">
+    <%= simple_form_for(@evento) do |f| %>
+      <% if evento.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= pluralize(evento.errors.count, "No se puede guardar los datos, error en los siguientes campos:") %></h3>
+            <ul>
+              <% evento.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
         </div>
-        <div class="col-md-3 col-sm-14">
-          <%= f.input :fecha, as: :datetime_picker, readonly: true,
-                  input_html: {value: evento.fecha.try(:strftime, '%d/%m/%Y'),
-                      data: {date_options: {format: 'DD/MM/YYYY', ignoreReadonly: true}}} %>
+      <% end %>
+        <div class="col-md-offset-2 col-md-9">
+          <div class="row">
+            <div class="col-md-3">
+              <%= f.label :nombre, :required => true %>
+              <%= f.text_field :asunto, class:'form-control' %>
+            </div>
+            <div class="col-md-3 col-sm-10">
+              <%= f.input :fecha, as: :datetime_picker, readonly: true,
+                input_html: {
+                  data: {date_options: {format: 'DD/MM/YYYY', ignoreReadonly: true}}} %>
+            </div>
+            <div class="col-md-3">
+              <%= f.label :ubicacion %>
+              <%= f.text_field :ubicacion, :required => true, class:'form-control' %>
+            </div>
+            <div class="col-md-3">
+              <%=f.input :hora%>
+            </div> 
+          </div>
         </div>
-        <div class="col-md-3">
-          <%= f.label :ubicacion %>
-          <%= f.text_field :ubicacion, :required => true, class:'form-control' %>
-        </div>
-        <div class="col-md-3">
-          <%=f.input :hora%>
-        </div> 
-      </div>
-    <hr>
-      <h2><center><b>Personas Asistentes</b></center></h2>
-      <br>
-        <div class="compact">
-          <%= f.fields_for :personas do |personas_for_form| %>
-            <%= render 'persona_fields', f: personas_for_form %>
-          <% end %>
-          <%= link_to_add_fields "Agregar", f, :personas %>
-        </div>
-      <div class="actions">
-        <%= f.submit "Guardar", class: "btn btn-default btn-md"%>
-      </div>
-  <% end %>
-    <% if @mostrar == true %>
-      <%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, @evento %>
-    <% end %>
-    <br>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <br><br><center><label for="persona_datos"><h4><b>Ingrese Documento o Código</b></h4></label></center> 
+              <%= content_tag :input, "",name: "persona_datos", id:"persona_datos", class: "form-control"%>
+          </div>
+          <% personas = @evento.personas %>
+            <% personas_empty = personas.empty?  %>
+              <div class="col-md-12"><br><br>
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered" id="evento_personas"><br>
+                    <thead>
+                      <tr>
+                        <th class="text-center">Hora</th>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Documento</th>
+                        <th class="text-center">Codigo</th>
+                        <th class="text-center">Cargo</th>
+                        <th class="text-center" colspan="2"></th>
+                      </tr>
+                    </thead>
+                      <tbody>
+                        <% if personas_empty %>
+                          <tr id="fila_vacia">
+                            <td colspan="6"><center> No se han añadido personas a este evento </center></td>
+                          </tr>
+                            <% else %>
+                              <% personas.each do |persona| %>
+                                  <div class="col-md-3">
+                                    <%=f.input :hora%>
+                                  </div> 
+                                <tr id="<%= persona.id %>">
+                                  <td class="text-center"><%= persona.nombres %> </td>
+                                  <td class="text-center"><%= persona.documento %> </td>
+                                  <td class="text-center"><%= persona.codigo %> </td>
+                                  <td class="text-center"><%= persona.cargo.name %> </td>
+                                  <td>
+                                    <%= button_tag(type: "button", class: "clase-boton eliminar") do %>
+                                      <i class="fa fa-times fa-2x" title="GUARDAR"></i>
+                                    <% end %>
+                                  </td>
+                                </tr>
+                              <% end %>
+                        <% end %>
+                      </tbody>
+                  </table>
+                </div>
+                  <% personas.each do |persona| %>
+                    <% per_id = persona.id  %>
+                      <%= f.hidden_field :personas, multiple: true, value: per_id, id: "evento_persona_#{per_id}" %>        
+                  <% end %>
+              </div>
+        </div>  
+      <%= button_tag(type: "submit", class: "clase-boton", id: "submit_valido") do %>
+        <i class="fa fa-floppy-o fa-2x" title="GUARDAR"></i>
+      <% end %>
+        &nbsp; &nbsp;
       <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, eventos_path %>
-</div>
+    <% end %>
+  </div>              

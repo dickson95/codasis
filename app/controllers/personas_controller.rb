@@ -1,76 +1,82 @@
 class PersonasController < ApplicationController
-  before_action :set_persona, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
-  
-  # GET /personas
-  # GET /personas.json
-  def index
-    #@personas = Persona.all
-    @personas = Persona.search(params[:search], params[:page])
-  end
-
-  # GET /personas/1
-  # GET /personas/1.json
-  def show
-  end
-
-  # GET /personas/new
-  def new
-    @persona = Persona.new
-  end
-
-  # GET /personas/1/edit
-  def edit
-  end
-
-  # POST /personas
-  # POST /personas.json
-  def create
-    @persona = Persona.new(persona_params)
-
-    respond_to do |format|
-      if @persona.save
-        format.html { redirect_to personas_url, notice: 'La persona fue creada satisfactoriamente.' }
-        format.json { head :no_content }
-      else
-        format.html { render :new }
-        format.json { render json: @persona.errors, status: :unprocessable_entity }
+    before_action :set_persona, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
+                      
+    def index
+      @personas = Persona.search(params[:search], params[:page])
+    end
+    
+   #para generar el pdf 
+    def show
+      @evento = Evento.where('id = ?', @persona.evento_id).last
+      respond_to do |format|
+        format.js
+        format.html
+        format.pdf do
+          render :pdf => "Reporte Nro #{@persona.id}",
+          :disposition => 'inline',
+          layout: 'pdf.html',
+          :template => 'personas/pdf_show.pdf.erb',
+          :show_as_html => params[:debug].present?
+        end
       end
     end
-  end
-
-  # PATCH/PUT /personas/1
-  # PATCH/PUT /personas/1.json
-  def update
-    respond_to do |format|
-      if @persona.update(persona_params)
-        format.html { redirect_to personas_url, notice: 'La persona fue actialisada correctamente.' }
-        format.json { head :no_content }
-      else
-        format.html { render :edit }
-        format.json { render json: @persona.errors, status: :unprocessable_entity }
+    
+    def new
+      @persona = Persona.new
+    end
+                    
+    def edit
+    end
+                    
+    def create
+      @persona = Persona.new(persona_params)
+      respond_to do |format|
+        if @persona.save
+          format.html { redirect_to personas_url, notice: 'El registro fue creado satisfactoriamente.' }
+          format.json { head :no_content }
+        else
+          format.html { render :new }
+          format.json { render json: @persona.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
-
-  # DELETE /personas/1
-  # DELETE /personas/1.json
-  def destroy
-    @persona.destroy
-    respond_to do |format|
-      format.html { redirect_to personas_url, notice: 'La persona fue eliminada correctamente.' }
-      format.json { head :no_content }
+                    
+    def update
+      respond_to do |format|
+        if @persona.update(persona_params)
+          format.html { redirect_to personas_url, notice: 'El registro fue actualizado correctamente.' }
+          format.json { head :no_content }
+        else
+          format.html { render :edit }
+          format.json { render json: @persona.errors, status: :unprocessable_entity }
+        end
+      end
     end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
+                    
+    def destroy
+      @persona.destroy
+      respond_to do |format|
+        format.html { redirect_to personas_url, notice: 'El registro fue eliminado correctamente.' }
+        format.json { head :no_content }
+      end
+    end
+                     
+    def buscar_persona
+      persona = Persona.where("codigo = ? OR documento = ? ", params[:codigo], params[:documento]).limit(1).first
+      respond_to do |format|
+        format.json{ render json: persona }
+      end
+    end
+                     
+    private
+                
     def set_persona
       @persona = Persona.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+                
     def persona_params
-      params.require(:persona).permit(:nombres, :documento, :empresa, :email, :telefono, :codigo, :cargo_id, :usuario_id)
+      params.require(:persona).permit(:hora, :nombres, :documento, :empresa, :email, :telefono, :codigo, :cargo_id, :usuario_id)
     end
+    
 end

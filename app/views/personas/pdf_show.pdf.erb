@@ -1,0 +1,29 @@
+<center><%= wicked_pdf_image_tag 'sen.jpg' %></center>
+  <br><br>
+  <center><p><b>REGIONAL ANTIOQUIA</b></p></center>
+  <br>
+  <center><p><b>COMPLEJO SUR</b></p></center>
+  <br>
+  <center><p><b>CERTIFICA</b></p></center>
+  <br><br>
+  Que el sr(a) <b><%= @persona.nombres %></b> identificado(a) con cedula de ciudadanía No. <b><%= @persona.documento %></b>
+  asistió al evento <b><%= @evento.asunto %></b>, el día <b>&nbsp;<%= I18n.localize @evento.fecha, format: :long %></b> en el 
+  Centro de Formación en Diseño, Confección y Moda. 
+  <br><br><br><br><br>
+  Dicho documento se expide el día <b>
+      
+<%#codigo para la fecha actual#%>
+<script>
+  var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+  var f=new Date();
+  document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+</script>
+.
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<hr>
+<center>
+    <h6>SERVICIO NACIONAL DE APRENDIZAJE<br> 
+    NIT 899999034-1<br>
+    Calle 63 No. 58B-03 Barrio Calatrava Itagui-Colombia</h6>
+</center>
+<%#Codigo para la vista del PDF#%>

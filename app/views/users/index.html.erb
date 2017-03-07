@@ -1,31 +1,31 @@
-
-
-<h1>Usuarios</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Email</th>
-      <th>Cantidad Ingresos</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.sign_in_count %></td>
-        <td><%= link_to 'Mostrar', user %></td>
-        <td><%= link_to 'Editar', edit_user_path(user) %></td>
-        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
+  <h2><center><b>LISTA DE USUARIOS</b></center></h2>
+  <br><br>
+  <div class="table-responsive">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th class="center">NOMBRE</th>
+        <th class="center">EMAIL</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="center"><%= user.name %></td>
+          <td class="center"><%= user.email %></td>
+          <td><%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, user, remote: true %></td>
+          <td><%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_user_path(user) %></td>
+          <td><%= link_to '<i class="fa fa-times fa-2x" title="ELIMINAR"></i>'.html_safe, user, method: :delete, data: { confirm: 'Está seguro de eliminar este registro?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+<br>
+<%= link_to '<i class="fa fa-plus-square fa-2x" title="NUEVO USUARIO"></i>'.html_safe, new_user_path %>
+&nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, users_path %>
 
-<%= link_to 'Nuevo Usuario', new_user_path %>
+
+

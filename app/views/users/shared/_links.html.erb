@@ -2,8 +2,8 @@
   <%= link_to t(".Registrarse", :default => "Registrarse"), new_session_path(resource_name) %><br />
 <% end %>
 
-<% if devise_mapping.registerable? && controller_name != 'Inscripciones' %>
-  <%= link_to t(".Regístrate", :default => "Registrate"), new_registration_path(resource_name) %><br />
+<% if devise_mapping.registerable? && controller_name != 'Inscripcion' %>
+  <%= link_to t(".Regístrarse", :default => "Registrarse"), new_registration_path(resource_name) %><br />
 <% end %>
 
 <% if devise_mapping.recoverable? && controller_name != 'Contraseña' %>
@@ -20,6 +20,7 @@
 
 <% if devise_mapping.omniauthable? %>
   <% resource_class.omniauth_providers.each do |provider| %>
-  <%= link_to t('.sign_in_with_provider', :provider => provider.to_s.titleize, :default => "Inicia sesión con: #{provider.to_s.titleize}"), omniauth_authorize_path(resource_name, provider) %><br />
+    <%= link_to t('.sign_in_with_provider', :provider => provider.to_s.titleize, :default => "Inicia sesión con: #{provider.to_s.titleize}"), omniauth_authorize_path(resource_name, provider) %><br />
   <% end %>
 <% end %>
+<%#ok%>

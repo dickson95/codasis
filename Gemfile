@@ -75,7 +75,12 @@ end
 gem 'cancancan'
 gem 'bootswatch-rails'
 
-# code bars
+# code barras
 gem "barby"
 gem "has_barcode"
 gem "rqrcode"
+
+#para generar el pdf
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-heroku'
+gem 'wkhtmltopdf-binary'

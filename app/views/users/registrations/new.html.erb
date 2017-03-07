@@ -1,7 +1,7 @@
 <%= bootstrap_devise_error_messages! %>
 <div class="panel panel-default devise-bs">
   <div class="panel-heading">
-    <h4><center><b><%= t('.Regístrate', :default => "REGISTRARSE") %></b></center></h4>
+    <h4><center><b><%= t('.Regístrarse', :default => "REGISTRARSE") %></b></center></h4>
   </div>
    <div class="col-md-offset-4 col-md-4">
   <div class="panel-body">
@@ -22,7 +22,8 @@
         <%= f.label :confirmar_contraseña %>
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
-      <%= f.submit t('.Regístrate', :default => "Regístrarse"), class: "btn btn-primary" %>
+      <%= f.submit t('.Regístrarse', :default => "Aceptar"), class: "btn btn-primary" %>
+      &nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, root_path %>
     <% end %>
   </div>
   </div>

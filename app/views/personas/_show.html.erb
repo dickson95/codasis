@@ -2,54 +2,55 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-      	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        	<span aria-hidden="true">&times;</span>
-      	</button>
-      	  <h3 class="modal-title"><center>DATOS PERSONALES</center></h3>
-    	</div>
-    	<div class="modal-body">
-      	<div class="row">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          <h3 class="modal-title"><center>DATOS PERSONALES</center></h3>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+           <div class="col-md-3">
+            <strong>Hora:</strong>
+            <%= @persona.hora %>
+          </div>
           <div class="col-md-3">
             <strong>Nombre:</strong>
             <%= @persona.nombres %>
           </div>
-          
           <div class="col-md-3">
             <strong>Documento:</strong>
             <%= @persona.documento %>
           </div>
-          
           <div class="col-md-3">
             <strong>Empresa:</strong>
             <%= @persona.empresa %>
           </div>
-          
           <div class="col-md-3">
             <strong>Email:</strong>
             <%= @persona.email %>
           </div>
-          
           <div class="col-md-3">
             <strong>Telefono:</strong>
             <%= @persona.telefono %>
           </div>
-          
           <div class="col-md-3">
             <strong>Codigo:</strong>
             <dd><%= @persona.show_barcode(@persona.codigo).html_safe %></dd>
             <%= @persona.codigo %>
           </div>
-          
           <div class="col-md-3">
             <strong>Cargo:</strong>
             <%= @persona.cargo.try(:nombre) %>
           </div>
-          
         </div>
-      	  <div class="modal-footer"></div>
-  	  </div>
+          <div class="modal-footer"></div>
+      </div>
     </div>
   </div>
 </div>
+<%#ok%>
 
- 
+
+
+
+

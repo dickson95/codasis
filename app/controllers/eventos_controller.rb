@@ -2,35 +2,29 @@ class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
   
-  # GET /eventos
-  # GET /eventos.json
   def index
-    #@eventos = Evento.all
     @eventos = Evento.search(params[:search], params[:page])
   end
-
-  # GET /eventos/1
-  # GET /eventos/1.json
+  
   def show
+   
   end
 
-  # GET /eventos/new
   def new
     @evento = Evento.new
-    @evento.personas.build
   end
 
-  # GET /eventos/1/edit
   def edit
+    @evento.fecha.strftime("%d/%m/%Y")
+    @evento.hora
+    puts "esta es la fecha #{@evento.fecha}"
   end
 
-  # POST /eventos
-  # POST /eventos.json
   def create
     @evento = Evento.new(evento_params)
-
     respond_to do |format|
       if @evento.save
+        asociar_personas
         format.html { redirect_to eventos_url, notice: 'El evento fue creado correctamente.' }
         format.json { head :no_content }
       else
@@ -40,11 +34,11 @@ class EventosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /eventos/1
-  # PATCH/PUT /eventos/1.json
   def update
     respond_to do |format|
       if @evento.update(evento_params)
+        desasociar_personas
+        asociar_personas
         format.html { redirect_to eventos_url, notice: 'El evento fue modificado correctamente.' }
         format.json { head :no_content }
       else
@@ -54,8 +48,6 @@ class EventosController < ApplicationController
     end
   end
 
-  # DELETE /eventos/1
-  # DELETE /eventos/1.json
   def destroy
     @evento.destroy
     respond_to do |format|
@@ -65,15 +57,45 @@ class EventosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_evento
       @evento = Evento.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:asunto, :fecha, :hora, :ubicacion,
-                                  personas_attributes: [:id, :nombres, :documento, 
-                                  :empresa, :email,:telefono,:codigo,:cargo_id, :evento_id, :_destroy])
+      params.require(:evento).permit(:asunto, :fecha, :hora, :ubicacion)
     end
+    
+    # Asociar personar a un evento
+    # @evento: variable global que debe se declarada con el evento antes de llamar
+    # este método
+    def asociar_personas
+      personas = Persona.where(id: params[:evento][:personas])
+      personas.each do |persona|
+        persona.update_attribute(:evento, @evento)
+      end
+    end
+    
+    # Desasociar personas del evento sobre el que se está trabajando
+    # @evento: variable global que debe se declarada con el evento antes de llamar
+    # este método
+    def desasociar_personas
+      personas = @evento.personas.to_ary
+      desasociar = comparar_personas_evento(personas)
+      desasociar.each do |persona|
+        persona.update_attribute(:evento, nil)
+      end
+    end
+    
+    # Comparar las personas que tiene un evento con las que son pasadas en el
+    # array de los parámetros
+    def comparar_personas_evento(personas)
+      params[:evento][:personas].each do |id|
+        persona = Persona.find(id)
+        if personas.include?(persona)
+          personas.delete(persona)
+        end
+      end
+      personas
+    end
+    
 end

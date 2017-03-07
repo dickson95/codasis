@@ -1,49 +1,21 @@
-<%= simple_form_for(@user) do |f| %>
-
-	<div class="col-md-12">
-	    <div class="col-md-3 col-sm-6">
-	      <%= f.input :name, autofocus: true, class: "form-control", label: "Nombre" %>
-	    </div>
-	</div>
-	<div class="col-md-12">
-	    <div class="col-md-3 col-sm-6">
-	    	<%= f.input :email, autofocus: true, class: "form-control", label: "Email" %>
-	    </div>
-	</div>
-	<div class="col-md-12">
-	    <div class="col-md-3 col-sm-6">
-	    	<%= f.input :password, autofocus: true, class: "form-control", label: "Contraseña" %>
-	    </div>
-	</div>
-	<div class="col-md-12">
-	    <div class="col-md-3 col-sm-6">
-	    	<%= f.input :password_confirmation, autofocus: true, class: "form-control", label: "Confirmar Contraseña" %>
-	    </div>
-	</div>
-	
-	<div class="col-md-12">
-	 <div class="col-md-3 col-sm-6">
-      <% for role in Rol.all %>
-      
-        <div>
-         <% if role.name != 'usuario' %>
-          <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-          <%=h role.name %>
-         <% end %>
-        </div>
-        
-      <% end %>
-      <%= hidden_field_tag "user[role_ids][]", "" %>
-      
-      <%= button_tag(type: "submit", class: "clase-boton") do %>
-       <i class="fa fa-floppy-o fa-2x"></i>
-      <% end %>
-      
-	  </div>
-	</div>
-	
-
-<% end %>
-
-
-
+<br>
+<div class="col-md-offset-4 col-md-4">
+    <%= simple_form_for(@user) do |f| %>
+      <%= f.input :name, autofocus: true, class: "form-control", label: "Nombre" %>
+      <%= f.input :email, autofocus: true, class: "form-control", label: "Email" %>
+      <%= f.input :password, autofocus: true, class: "form-control", label: "Contraseña" %>
+      <%= f.input :password_confirmation, autofocus: true, class: "form-control", label: "Confirmar Contraseña" %>
+        <% for role in Rol.all %>
+          <div>
+            <%# if role.name != 'usuario' %>
+              <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+              <%=h role.name %>
+            <%# end %>
+          </div>
+        <% end %>
+          <%= hidden_field_tag "user[role_ids][]", "" %>
+          <%= button_tag(type: "submit", class: "clase-boton") do %>
+            <i class="fa fa-floppy-o fa-2x" title ="GUARDAR"></i>
+          <% end %>
+    <% end %>        
+</div>

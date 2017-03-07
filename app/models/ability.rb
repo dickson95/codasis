@@ -8,6 +8,14 @@ class Ability
         can :manage, :all
       elsif user.has_rol? :usuario
         can :read, Evento
+        can :pdf, Evento
+      elsif user.has_rol? :aprendiz
+        can :read, Evento
+        can :read, Persona
+        can :create, Persona
+        can :update, Persona
+      else
+        can :manage, :all
       end
       # Define abilities for the passed in user here. For example:
       #

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'my'
   resources :users
   
-  resources :personas
+  resources :personas do
+    get :buscar_persona, on: :collection
+  end
   resources :eventos
   resources :cargos
   
@@ -14,6 +16,10 @@ Rails.application.routes.draw do
   get 'static_pages/help'
   get 'static_pages/about'
 
-  root :to => 'static_pages#home'
+  get 'constancia', to: 'personas#constancia', as: 'constancia'
   
+  post 'personas/traer_datos', to: 'personas#traer_datos'
+  
+  root :to => 'static_pages#home'
+
 end

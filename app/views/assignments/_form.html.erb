@@ -1,12 +1,18 @@
-<%= simple_form_for(@assignment) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :user %>
-    <%= f.association :rol %>
+<br>
+  <div class="col-md-offset-4 col-md-4">
+    <%= simple_form_for(@assignment) do |f| %>
+      <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.association :user %>
+          <%= f.association :rol %>
+        </div>
+        <br>
+        <ul>
+          <%= button_tag(type: "submit", class: "clase-boton") do %>
+            <i class="fa fa-floppy-o fa-2x" title="GUARDAR"></i>
+          <% end %>
+          <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, assignments_path %>
+        </ul>
+    <% end %>                
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+<%#ok%>

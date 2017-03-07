@@ -1,28 +1,21 @@
-<%# add navigation links to this file 
-<li>
-<%= link_to root_path do 
-<% end 
-</li>%>
-
-<ul class="nav navbar-nav navbar-left">
+<ul class="nav navbar-nav navbar-left ">
   <li><%= image_tag('logo_senn.png', class:'img-responsive logo_f') %></li>
-  <li><%= image_tag("codasis_lofo.png", class:"mini_m")%></li>
-  <li><%= link_to "CODASIS", user_session_path %></li>
+  <li><%= image_tag("logoultimo-01.png", class:"mini_m") %></li>
 </ul> 
-        
-<% if can? :manage, :all %>
-  <li><%= link_to "Eventos", eventos_path %></li>
-  <li><%= link_to "Personas", personas_path %></li>
-  <li><%= link_to "Cargos", cargos_path %></li>
-  <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Seguridad
-    <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <li><%= link_to "Usuarios", users_path %></li>
-      <li><%= link_to "Roles", roles_path %></li>
-      <li><%= link_to "Permisos", assignments_path %></li>
-    </ul>
-  </li>
-<% elsif can? :read, Evento%>
-  <li><%= link_to "Eventos", eventos_path %></li>
+  <% if can? :manage, :all %>
+    <li><%= link_to "Inicio", root_path %></li>
+    <li><%= link_to "Eventos", eventos_path %></li>
+    <li><%= link_to "Personas", personas_path %></li>
+    <li><%= link_to "Cargos", cargos_path %></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Seguridad<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Usuarios", users_path %></li>
+          <li><%= link_to "Roles", roles_path %></li>
+          <li><%= link_to "Permisos", assignments_path %></li>
+        </ul>
+    </li>
+  <% elsif can? :read, Evento%>
+    <li><%= link_to "Eventos", eventos_path %></li>
 <% end %>
+<%#terminado#%>

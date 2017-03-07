@@ -1,33 +1,24 @@
 class CargosController < ApplicationController
+  
   before_action :set_cargo, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
   
-  # GET /cargos
-  # GET /cargos.json
   def index
-    #@cargos = Cargo.all
     @cargos = Cargo.search(params[:search], params[:page])
   end
 
-  # GET /cargos/1
-  # GET /cargos/1.json
   def show
   end
 
-  # GET /cargos/new
   def new
     @cargo = Cargo.new
   end
 
-  # GET /cargos/1/edit
   def edit
   end
 
-  # POST /cargos
-  # POST /cargos.json
   def create
     @cargo = Cargo.new(cargo_params)
-
     respond_to do |format|
       if @cargo.save
         format.html { redirect_to cargos_url, notice: 'El cargo fue creado correctamente.' }
@@ -39,8 +30,6 @@ class CargosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cargos/1
-  # PATCH/PUT /cargos/1.json
   def update
     respond_to do |format|
       if @cargo.update(cargo_params)
@@ -53,8 +42,6 @@ class CargosController < ApplicationController
     end
   end
 
-  # DELETE /cargos/1
-  # DELETE /cargos/1.json
   def destroy
     @cargo.destroy
     respond_to do |format|
@@ -64,13 +51,10 @@ class CargosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    #Utilice devoluciones de llamada para compartir configuraciones comunes o restricciones entre acciones
     def set_cargo
       @cargo = Cargo.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def cargo_params
       params.require(:cargo).permit(:nombre, :dependencia)
     end

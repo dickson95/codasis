@@ -4,13 +4,13 @@ class DatePickerInput < SimpleForm::Inputs::StringInput
     set_value_html_option
 
     template.content_tag :div, class: 'input-group date datetimepicker' do
-      input = super(wrapper_options) # leave StringInput do the real rendering--Dejar String Input hacer la representación real
+      input = super(wrapper_options)
       input + input_button
     end
   end
 
   def input_html_classes
-    super.push ''   # 'form-control'
+    super.push '' 
   end
 
   private
@@ -39,7 +39,7 @@ class DatePickerInput < SimpleForm::Inputs::StringInput
   end
 
   def display_pattern
-    I18n.t('datepicker.dformat', default: '%d/%m/%Y')
+    I18n.t('datepicker.dformat', default: '%d/%m/%a')
   end
 
   def picker_pattern

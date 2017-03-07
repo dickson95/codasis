@@ -9,14 +9,15 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <% puts "renderiza app"  %>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
-       <% render 'layouts/header' %>
-       <%= yield %>
+     <%= render 'layouts/messages' %>
+     <%= render 'layouts/header' %>
+     <%= yield %>
     </main>
-	<%= render 'layouts/footer' %>
+	    <%= render 'layouts/footer' %>
   </body>
 </html>

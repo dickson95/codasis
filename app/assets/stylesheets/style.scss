@@ -1,28 +1,21 @@
-.mini_m {
-	width: 80px;
-	height:70px;
-	padding: 6px 9px 6px 9px;
-}
-
-.logmed{
-	width: 600px;
-	//ancho
-	height: 120px;
-	//alto
-}
-
 .logo{
 	width: 750px; 
 }
 
+/*logo del home parte central*/
 .logo1{
 	width: 445px; 
-	height:180px;
+	height: 180px;
 }
 
 .logo2{
 	width: 500px; 
-	height:250px;
+	height: 250px;
+}
+
+.logo3{
+	width: 450px; 
+	height: 250px;
 }
 
 .h4{
@@ -51,12 +44,6 @@ background-image: linear-gradient(to top, #FFFFFF 0%, #706565 100%);
 	
 }
 
-.logo_f {
-	width:60px;
-	height:70px;
-	padding: 6px 9px 6px 9px;/*alrededor de una imagen o una palabra*/
-}
-
 .nomb{
 	padding: 2px 7px 2px 7px;
 	}
@@ -76,8 +63,16 @@ background-image: linear-gradient(to top, #FFFFFF 0%, #706565 100%);
     padding: 2px 16px;
     background-color: #20B2AA;
     color: white;
-    width:870px;
 	height:40px;
 }
 
+ ul li {
+    font-size: 16px;
+    list-style: square;
+    font-weight: bold;
+  }
+  
+  ul.navlinks {
+    height: 1640px;
+    }
  

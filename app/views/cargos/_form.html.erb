@@ -1,35 +1,33 @@
 <br>
-<div class="col-md-offset-4 col-md-4">
-  
+  <div class="col-md-offset-4 col-md-4">
     <%= form_for(@cargo) do |f| %>
       <% if cargo.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(cargo.errors.count, "error") %> No se puede guardar los datos, error en uno de los campos:</h2>
-          <ul>
-            <% cargo.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+          <h2><%= pluralize(cargo.errors.count, "Error en los siguientes campos:") %></h2>
+            <ul>
+              <% cargo.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
         </div>
       <% end %>
-  
         <%= f.label :nombre %>
-       	<%= f.text_field :nombre, :required => true, class:'form-control' %>
+        <%= f.text_field :nombre, :required => true, class:'form-control' %>
+      <br><br>
         <%= f.label :dependencia %>
-       	<%= f.text_field :dependencia, class:'form-control' %>
-      
+        <%= f.text_field :dependencia, class:'form-control' %>
       <br>
-      <div class="actions">
-        <%= f.submit " Guardar", class: "btn btn-default btn-lg btn-block" %>
-      </div>
-    <% end %>
-    
-    <% if @mostrar == true %>
-      <%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, @cargo %>
-    <% end %>
-    <br>
-    <br>
-        <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, cargos_path %>
-</div>
-
- 
+        <ul>
+          <%= button_tag(type: "submit", class: "clase-boton") do %>
+            <i class="fa fa-floppy-o fa-2x" title="GUARDAR"></i>
+          <% end %>
+          &nbsp; &nbsp;
+          <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, cargos_path %>
+        </ul>
+          <% if @mostrar == true %>
+            <%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, @cargo %>
+          <% end %>
+      <br><br>
+    <% end %>      
+  </div>
+<%#Terminado, formulario que muestra al querer agregar y editar.#%>

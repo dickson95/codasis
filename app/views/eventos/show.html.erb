@@ -1,44 +1,50 @@
-<h2><center><b>INFORMACIÓN DEL EVENTO</b></center></h2>
 <br>
-  <div class="row">
-    <div class="col-md-3">        
-      <strong>Nombre:</strong>
-        <%= @evento.asunto %>
+  <div class="well well-sm, col-md-offset-4">
+    <h3><center><b>EVENTO</b></center></h3>
+  </div>  
+    <div class="row">
+      <div class="col-md-3">        
+        <strong class="center"><h4><b>Nombre:</b></h4></strong>
+        <center><%= @evento.asunto %></center>
+      </div>
+      <div class="col-md-3">
+        <strong class="center"><h4><b>Fecha:</b></h4></strong>
+        <center><%= @evento.fecha.try(:strftime, '%d/%m/%Y') %></center>
+      </div>
+      <div class="col-md-3">
+        <strong class="center"><h4><b>Hora:</b></h4></strong>
+        <center><%= @evento.hora %></center>
+      </div>
+      <div class="col-md-3">
+        <strong class="center"><h4><b>Ubicacion:</b></h4></strong>
+        <center><%= @evento.ubicacion %></center>
+      </div>
     </div>
-    <div class="col-md-3">
-      <strong>Fecha:</strong>
-        <%= @evento.fecha %>
-    </div>
-    <div class="col-md-3">
-      <strong>Hora:</strong>
-        <%= @evento.hora %>
-    </div>
-    <div class="col-md-3">
-      <strong>Ubicacion:</strong>
-        <%= @evento.ubicacion %>
-    </div>
-    <br><br>
-  </div>
-  
+    <br><hr>
+    <div class="well well-sm, col-md-offset-4">
+      <h4><center><b>Lista de asistencia</b></center></h4>
+    </div>  
     <% if @evento.personas.any? %>
+    <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th class="center">Nombres</th>
+            <th class="center">Hora</th>
+            <th class="center">Nombre</th>
             <th class="center">Documento</th>
             <th class="center">Empresa</th>
             <th class="center">Email</th>
             <th class="center">Telefono</th>
             <th class="center">Código</th>
             <th class="center">Cargo</th>
-            <% if can? :manage, :all %>
-              <th colspan="1"></th>
-            <% end %>
+            <th class="center"></th>
+            <th class="center">Imprimir</th>
           </tr>
-        <thead>
+        </thead>
         <% @evento.personas.each do |persona| %>
           <tbody2>
             <tr>
+              <td class="center"><%= persona.hora %></td>
               <td class="center"><%= persona.nombres %></td>
               <td class="center"><%= persona.documento %></td>
               <td class="center"><%= persona.empresa %></td>
@@ -47,17 +53,19 @@
               <td class="center"><%= persona.codigo %></td>
               <td class="center"><%= persona.cargo.try(:name) %></td>
               <% if can? :manage, :all %>
-                <td> <%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, persona,remote: true %> </td>
-              <% end %>
+              <td><%= link_to '<i class="fa fa-eye fa-2x" title="MOSTRAR"></i>'.html_safe, persona, remote: true %> </td>
+               <% end %>
+              <td class="center"><%= link_to '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>Constancia'.html_safe, persona_path(@persona, format: 'pdf', id: persona.id), :target => '_blank', class:"btn btn-info" %></td>
             </tr>
           </tbody2>
         <% end %>
       </table>
-      <% else %>
-        <p>No hay asistencias</p>
-    <% end %>
-<% if can? :manage, :all %>
-  &nbsp; &nbsp; <%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_evento_path(@evento) %>
-<% end %>
+    </div>  
+        <% else %>
+          <p>No hay asistencias</p>
+        <% end %>
+        <% if can? :manage, :all %>
+          &nbsp; &nbsp; <%= link_to '<i class="fa fa-pencil-square fa-2x" title="EDITAR"></i>'.html_safe, edit_evento_path(@evento) %>
+        <% end %>
 &nbsp; &nbsp; <%= link_to '<i class="fa fa-reply fa-2x" title="ATRAS"></i>'.html_safe, eventos_path %>
-
+<%#ok%>
