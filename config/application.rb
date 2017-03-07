@@ -12,5 +12,6 @@ module Codasis
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'America/Bogota'
     config.i18n.default_locale = 'es-CO'
+    config.active_record.default_timezone = :local # Cargar la hora local
   end
 end

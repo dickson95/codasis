@@ -19,3 +19,5 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+dev_codasis.sqlite3
+test_codasis.sqlite3
