@@ -1,6 +1,7 @@
 class Persona < ApplicationRecord
   belongs_to :cargo
-  belongs_to :evento, optional: true
+  has_many :eventos_personas
+  has_many :eventos, through: :eventos_personas
   
   def self.search(search, page)
     where(['upper(nombres) like ?',
@@ -23,6 +24,10 @@ class Persona < ApplicationRecord
   def name
     self.nombres
   end 
+
+  def hora_evento(e)
+    eventos_personas.where(evento: e).first.created_at.try(:strftime, "%H:%M")
+  end
     
     #metodo para el codigo de barras 
     include HasBarcode

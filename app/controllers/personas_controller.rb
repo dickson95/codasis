@@ -64,9 +64,12 @@ class PersonasController < ApplicationController
                      
     def buscar_persona
       persona = Persona.where("codigo = ? OR documento = ? ", params[:codigo], params[:documento]).limit(1).first
-      persona.update_attribute(:hora, Time.zone.now.strftime("%H:%M:%S"))
+      data = {}
+      data[:persona] = persona
+      data[:hora] = "A.P"
+      data[:cargo] = persona.try(:cargo).try(:name)
       respond_to do |format|
-        format.json{ render json: persona }
+        format.json{ render json: data }
       end
     end
                      

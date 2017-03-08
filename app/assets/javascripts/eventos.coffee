@@ -11,18 +11,18 @@ $(document).on 'click', '.add_fields', (event) ->
 	event.preventDefault()
 
 $(document).on "turbolinks:load", ->
-	obtener_ids = (table, persona)->
+	obtener_ids = (table, id=null)->
 		ids = []
 		body = table.find("tbody")
 		$.each body.children("tr"), (i, v) ->
-			$("#evento_persona_"+persona.id).remove()
+			$("#evento_persona_"+id).remove()
 			input = $("<input/>").attr(
 				{
 					multiple: 'multiple',
-					value: persona.id,
-					id: 'evento_persona_'+persona.id,
+					value: id,
+					id: 'evento_persona_'+id,
 					type: 'hidden', 
-					name: 'evento[personas][]'
+					name: 'evento[persona_ids][]'
 				}
 				)
 			table.parent().append(input)
@@ -32,8 +32,16 @@ $(document).on "turbolinks:load", ->
 	# Evento para remover las personas de la tabla
 	$("body").on "click", ".eliminar", ->
 		tr = $(this).closest("tr")
+		tbody = tr.parent()
 		$("#evento_persona_"+tr.attr("id")).remove()
 		tr.remove()
+		if tbody.find("tr").length == 0
+			tr = $("<tr>").attr({id: "fila_vacia", class: "text-center"}).append(
+					$("<td>").attr({colspan: 6}).text("No se han añadido personas a este evento")
+				)
+			tbody.append(tr)
+			obtener_ids(tbody.parent())
+		
 	
 	$("body").on "keydown keyup", "#persona_datos", (e)->
 		val = $(this).val()
@@ -41,8 +49,9 @@ $(document).on "turbolinks:load", ->
 		$.ajax(
 			url: "/personas/buscar_persona?codigo="+val+"&documento="+val,
 			success:(data, status, xhr)->
-				if data
-					persona_id = data.id
+				if data.persona
+					persona = data.persona
+					persona_id = persona.id
 					table = $("#evento_personas")
 					table.find("tr#fila_vacia").remove()
 					button = $("<button>").attr(
@@ -54,17 +63,17 @@ $(document).on "turbolinks:load", ->
 						).append(
 							$("<i>").attr({class: "fa fa-times fa-2x"})
 							)
-					tr = $("<tr id='"+persona_id+"'>").append(
+					tr = $("<tr>").attr({id: persona_id, class: "text-center"}).append(
 							$("<td>").text(data.hora),
-							$("<td>").text(data.nombres),
-							$("<td>").text(data.documento),
-							$("<td>").text(data.codigo),
-							$("<td>").text(data.cargo_id),
+							$("<td>").text(persona.nombres),
+							$("<td>").text(persona.documento),
+							$("<td>").text(persona.codigo),
+							$("<td>").text(data.cargo),
 							$("<td>").append(button)
 						)
 					$("tr#"+persona_id).remove()
 					table.find("tbody").append(tr)
-					ids = obtener_ids(table, data)
+					ids = obtener_ids(table, persona.id)
 					$this.val("")
 					$("#evento_persona_ids").val(ids)
 			)

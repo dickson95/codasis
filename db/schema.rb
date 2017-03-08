@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215132853) do
+ActiveRecord::Schema.define(version: 20170307234555) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20170215132853) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "eventos_personas", force: :cascade do |t|
+    t.integer  "evento_id"
+    t.integer  "persona_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["evento_id"], name: "index_eventos_personas_on_evento_id"
+    t.index ["persona_id"], name: "index_eventos_personas_on_persona_id"
+  end
+
   create_table "personas", force: :cascade do |t|
     t.string   "nombres"
     t.string   "documento"
@@ -50,7 +59,6 @@ ActiveRecord::Schema.define(version: 20170215132853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "evento_id"
-    t.time     "hora"
     t.index ["cargo_id"], name: "index_personas_on_cargo_id"
     t.index ["evento_id"], name: "index_personas_on_evento_id"
     t.index ["usuario_id"], name: "index_personas_on_usuario_id"
