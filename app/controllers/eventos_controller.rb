@@ -65,18 +65,5 @@ class EventosController < ApplicationController
 
     def evento_params
       params.require(:evento).permit(:asunto, :fecha, :hora, :ubicacion, :persona_ids => [])
-    end
-    
-    # Comparar las personas que tiene un evento con las que son pasadas en el
-    # array de los parámetros
-    def comparar_personas_evento(personas)
-      params[:evento][:personas].each do |id|
-        persona = Persona.find(id)
-        if personas.include?(persona)
-          personas.delete(persona)
-        end
-      end
-      personas
-    end
-    
+    end    
 end

@@ -53,17 +53,17 @@
                     </thead>
                       <tbody>
                         <% if personas_empty %>
-                          <tr id="fila_vacia">
-                            <td colspan="6"><center> No se han añadido personas a este evento </center></td>
+                          <tr id="fila_vacia" class="text-center">
+                            <td colspan="6"> No se han añadido personas a este evento </td>
                           </tr>
                             <% else %>
                               <% personas.each do |persona| %>
-                                <tr id="<%= persona.id %>">
-                                  <td class="text-center"><%= persona.hora_evento(@evento) %> </td>
-                                  <td class="text-center"><%= persona.nombres %> </td>
-                                  <td class="text-center"><%= persona.documento %> </td>
-                                  <td class="text-center"><%= persona.codigo %> </td>
-                                  <td class="text-center"><%= persona.cargo.try(:name) %> </td>
+                                <tr id="<%= persona.id %>" class="text-center">
+                                  <td><%= persona.hora_evento(@evento) %> </td>
+                                  <td><%= persona.nombres %> </td>
+                                  <td><%= persona.documento %> </td>
+                                  <td><%= persona.codigo %> </td>
+                                  <td><%= persona.cargo.try(:name) %> </td>
                                   <td>
                                     <%= button_tag(type: "button", class: "clase-boton eliminar") do %>
                                       <i class="fa fa-times fa-2x" title="GUARDAR"></i>
@@ -73,6 +73,14 @@
                               <% end %>
                         <% end %>
                       </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="6" class="text-right">
+                            <strong>A.P</strong> Asignación pendiente. La hora se asigna una vez se guarda el evento <br>
+                            Una persona solo puede asistir a un evento una vez
+                          </td>
+                        </tr>
+                      </tfoot>
                   </table>
                 </div>
                   <% personas.each do |persona| %>
