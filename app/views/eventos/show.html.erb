@@ -44,7 +44,7 @@
         <% @evento.personas.each do |persona| %>
           <tbody2>
             <tr>
-              <td class="center"><%= persona.hora %></td>
+              <td class="center"><%= persona.hora_evento(@evento) %></td>
               <td class="center"><%= persona.nombres %></td>
               <td class="center"><%= persona.documento %></td>
               <td class="center"><%= persona.empresa %></td>

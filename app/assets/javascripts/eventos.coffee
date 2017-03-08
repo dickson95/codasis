@@ -22,7 +22,7 @@ $(document).on "turbolinks:load", ->
 					value: persona.id,
 					id: 'evento_persona_'+persona.id,
 					type: 'hidden', 
-					name: 'evento[personas][]'
+					name: 'evento[persona_ids][]'
 				}
 				)
 			table.parent().append(input)

@@ -14,8 +14,8 @@ class Evento < ApplicationRecord
       self.asunto
     end
     
-   has_many :personas
-   accepts_nested_attributes_for :personas
+   has_many :eventos_personas, dependent: :destroy
+   has_many :personas, through: :eventos_personas
 
    def personas_for_form
      collection = personas.where(evento_id: id)
